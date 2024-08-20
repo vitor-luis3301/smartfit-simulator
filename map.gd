@@ -24,6 +24,6 @@ func _process(delta: float) -> void:
 		$Layer1.set_cell(tile, 1, Vector2i(0,0), 0)
 	
 	if Input.is_action_pressed("left_button"):
-		$Layer2.set_cell(tile, 2, Vector2i(0,0), 0)
+		$Layer2.set_cell(tile, 0, Vector2i(0,0), 0)
 	if Input.is_action_pressed("right_button"):
 		$Layer2.erase_cell(tile)
