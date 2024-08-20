@@ -1,28 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsiqfg5wnspu4"]
+[gd_scene load_steps=3 format=3 uid="uid://dsiqfg5wnspu4"]
 
 [ext_resource type="Script" path="res://map.gd" id="1_senb0"]
-[ext_resource type="Texture2D" uid="uid://bavtq6dfw0gi1" path="res://pixil-frame-0 (1).png" id="2_gvjfx"]
-[ext_resource type="Texture2D" uid="uid://dj08bqfrkcjq3" path="res://pixil-frame-0.png" id="3_m54gu"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x3n1k"]
-texture = ExtResource("3_m54gu")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vt1q0"]
-texture = ExtResource("2_gvjfx")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_wpq4a"]
-tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_x3n1k")
-sources/1 = SubResource("TileSetAtlasSource_vt1q0")
+[ext_resource type="TileSet" uid="uid://d4lgjqe5qdgp4" path="res://academia.tres" id="2_kuc6b"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="map" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_wpq4a")
-format = 2
-layer_1/name = "Layer1"
+[node name="map" type="Node2D" parent="."]
 script = ExtResource("1_senb0")
+
+[node name="Layer0" type="TileMapLayer" parent="map"]
+use_parent_material = true
+tile_set = ExtResource("2_kuc6b")
+
+[node name="Layer1" type="TileMapLayer" parent="map"]
+use_parent_material = true
+tile_set = ExtResource("2_kuc6b")
+
+[node name="Layer2" type="TileMapLayer" parent="map"]
+use_parent_material = true
+tile_set = ExtResource("2_kuc6b")
