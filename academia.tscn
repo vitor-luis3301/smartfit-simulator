@@ -1,17 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsiqfg5wnspu4"]
+[gd_scene load_steps=5 format=3 uid="uid://dsiqfg5wnspu4"]
 
 [ext_resource type="Script" path="res://map.gd" id="1_senb0"]
 [ext_resource type="TileSet" uid="uid://d4lgjqe5qdgp4" path="res://academia.tres" id="2_kuc6b"]
-[ext_resource type="Texture2D" uid="uid://dtasajyasudan" path="res://spr_esteira.png" id="3_tph7a"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xdesx"]
-texture = ExtResource("3_tph7a")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_gxev4"]
-tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_xdesx")
+[ext_resource type="TileSet" uid="uid://2rv7ruq0wfpg" path="res://equipments.tres" id="3_8ugi6"]
+[ext_resource type="Theme" uid="uid://b3pyp5hxx8e7m" path="res://tema.tres" id="6_bw1bc"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -28,4 +20,18 @@ tile_set = ExtResource("2_kuc6b")
 
 [node name="Layer2" type="TileMapLayer" parent="map"]
 use_parent_material = true
-tile_set = SubResource("TileSet_gxev4")
+tile_set = ExtResource("3_8ugi6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="selectedItem" type="RichTextLabel" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 18.0
+offset_top = 17.0
+offset_right = 1037.0
+offset_bottom = 149.0
+theme = ExtResource("6_bw1bc")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+fit_content = true
+scroll_active = false

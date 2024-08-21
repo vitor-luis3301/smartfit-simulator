@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b3pyp5hxx8e7m"]
+
+[sub_resource type="SystemFont" id="SystemFont_n1noi"]
+font_names = PackedStringArray("Comic Sans MS")
+
+[sub_resource type="SystemFont" id="SystemFont_fnvfv"]
+font_names = PackedStringArray("Comic Sans MS")
+
+[resource]
+Label/fonts/font = SubResource("SystemFont_n1noi")
+RichTextLabel/fonts/normal_font = SubResource("SystemFont_fnvfv")
