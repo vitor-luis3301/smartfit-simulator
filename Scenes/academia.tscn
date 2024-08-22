@@ -1,24 +1,67 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsiqfg5wnspu4"]
+[gd_scene load_steps=16 format=3 uid="uid://dsiqfg5wnspu4"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_6omsm"]
+[ext_resource type="Texture2D" uid="uid://dj08bqfrkcjq3" path="res://Assets/sprites/pixil-frame-0.png" id="2_53ugc"]
 [ext_resource type="TileSet" uid="uid://d4lgjqe5qdgp4" path="res://Materials/academia.tres" id="2_vwq03"]
+[ext_resource type="Texture2D" uid="uid://67pxb6v3mr3v" path="res://Assets/sprites/pixil-frame-0 (2).png" id="3_bh8xy"]
 [ext_resource type="TileSet" uid="uid://2rv7ruq0wfpg" path="res://Materials/equipments.tres" id="3_f2wtw"]
+[ext_resource type="Texture2D" uid="uid://bavtq6dfw0gi1" path="res://Assets/sprites/pixil-frame-0 (1).png" id="3_sbdx7"]
 [ext_resource type="Theme" uid="uid://b3pyp5hxx8e7m" path="res://Materials/tema.tres" id="4_mnaoq"]
+[ext_resource type="AudioStream" uid="uid://dmso0i27g54bw" path="res://Assets/Music/Just Add Water.mp3" id="8_p8l7h"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2n1e"]
+texture = ExtResource("2_53ugc")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_dejs8"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_e2n1e")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t32hd"]
+texture = ExtResource("3_sbdx7")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8jsab"]
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_t32hd")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_os8fj"]
+texture = ExtResource("3_bh8xy")
+texture_region_size = Vector2i(96, 96)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_kmlcf"]
+tile_size = Vector2i(96, 96)
+sources/0 = SubResource("TileSetAtlasSource_os8fj")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_2ekyh"]
+vertices = PackedVector2Array(1058.88, 624.047, 9.00781, 629.938, 9.97656, 11.9688, 1052.1, 9.02344)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1, 640, 1069, 634, 1062, -1, 0, 2)])
 
 [node name="Node2D" type="Node2D"]
 
 [node name="map" type="Node2D" parent="."]
 script = ExtResource("1_6omsm")
 
+[node name="Layer-1" type="TileMapLayer" parent="map"]
+tile_set = SubResource("TileSet_dejs8")
+
 [node name="Layer0" type="TileMapLayer" parent="map"]
 use_parent_material = true
-tile_set = ExtResource("2_vwq03")
+tile_set = SubResource("TileSet_8jsab")
 
 [node name="Layer1" type="TileMapLayer" parent="map"]
 use_parent_material = true
 tile_set = ExtResource("2_vwq03")
 
 [node name="Layer2" type="TileMapLayer" parent="map"]
+use_parent_material = true
+tile_set = SubResource("TileSet_kmlcf")
+
+[node name="Layer3" type="TileMapLayer" parent="map"]
 use_parent_material = true
 tile_set = ExtResource("3_f2wtw")
 
@@ -35,3 +78,10 @@ theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_2ekyh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_p8l7h")
+autoplay = true
