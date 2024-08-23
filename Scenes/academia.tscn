@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dsiqfg5wnspu4"]
+[gd_scene load_steps=24 format=3 uid="uid://dsiqfg5wnspu4"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_6omsm"]
 [ext_resource type="TileSet" uid="uid://d4lgjqe5qdgp4" path="res://Materials/academia.tres" id="2_vwq03"]
@@ -44,6 +44,12 @@ texture_region_size = Vector2i(96, 96)
 [sub_resource type="TileSet" id="TileSet_kmlcf"]
 tile_size = Vector2i(96, 96)
 sources/0 = SubResource("TileSetAtlasSource_os8fj")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10pdm"]
+size = Vector2(226, 69)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oh4mw"]
+size = Vector2(130, 225)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqsbl"]
 bg_color = Color(0.422847, 0.673094, 0.408637, 1)
@@ -98,6 +104,17 @@ parameters/looping = true
 [node name="SprRecepcao" type="Sprite2D" parent="."]
 position = Vector2(64, 528)
 texture = ExtResource("9_rlw2f")
+
+[node name="ProtectedArea" type="Area2D" parent="."]
+position = Vector2(802, 548)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProtectedArea"]
+position = Vector2(103, 24.5)
+shape = SubResource("RectangleShape2D_10pdm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ProtectedArea"]
+position = Vector2(-738, -19.5)
+shape = SubResource("RectangleShape2D_oh4mw")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
