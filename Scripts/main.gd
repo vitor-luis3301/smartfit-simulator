@@ -78,5 +78,9 @@ func _process(delta: float) -> void:
 	else:
 		%selectedItem.text = "Item: " + items[selectedItem]
 	
+	# start game when button pressed
+	if %Button.button_pressed:
+		$NavigationRegion2D.bake_navigation_polygon()
+	
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
