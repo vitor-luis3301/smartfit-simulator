@@ -10,6 +10,8 @@ var threadmills : Dictionary = {}    # beeg_equip
 var mats : Dictionary = {}           # beeg_equip
 #-----------------------------------------------
 
+
+
 # -----------------SETTINGS---------------------
 var fullscreen : bool = false
 var windowed : bool = true

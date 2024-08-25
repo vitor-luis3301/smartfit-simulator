@@ -20,6 +20,7 @@ var items = [
 
 @onready var equipment = preload("res://Objects/Sample_equipment.tscn")
 
+
 func _ready() -> void:
 	# create floor
 	for x in GridSizeX:
@@ -71,6 +72,7 @@ func _physics_process(delta: float) -> void:
 	
 	var equipPosition = tilesize * tile + Vector2i(tilesize/2, tilesize/2)
 	
+	# Add equipment to the map when left mouse button is clicked
 	if Input.is_action_just_pressed("left_button") and canClick == true:
 		%smol_equip.set_cell(tile, selectedItem, Vector2i(0,0), 0)
 		if selectedItem >= 2:

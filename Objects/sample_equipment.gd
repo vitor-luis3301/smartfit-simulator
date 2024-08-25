@@ -4,13 +4,14 @@ extends Area2D
 @export var price : float
 @export var difficulty : String
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+"""
+func _ready():
+	connect("mouse_entered", _on_mouse_entered)
+	connect("mouse_entered", _on_mouse_exited)
 
 func _on_mouse_exited():
 	get_parent().canClick = true
 
-
 func _on_mouse_entered():
 	get_parent().canClick = false
+"""
