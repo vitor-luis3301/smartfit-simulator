@@ -1,0 +1,151 @@
+[gd_scene load_steps=22 format=3 uid="uid://dsiqfg5wnspu4"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_6omsm"]
+[ext_resource type="TileSet" uid="uid://d4lgjqe5qdgp4" path="res://Materials/academia.tres" id="2_vwq03"]
+[ext_resource type="Texture2D" uid="uid://c3dnwue1dnpl3" path="res://Assets/sprites/pixil-frame-0 (4).png" id="2_y4pm7"]
+[ext_resource type="Texture2D" uid="uid://67pxb6v3mr3v" path="res://Assets/sprites/pixil-frame-0 (2).png" id="3_bh8xy"]
+[ext_resource type="TileSet" uid="uid://2rv7ruq0wfpg" path="res://Materials/equipments.tres" id="3_f2wtw"]
+[ext_resource type="Texture2D" uid="uid://bavtq6dfw0gi1" path="res://Assets/sprites/pixil-frame-0 (1).png" id="3_sbdx7"]
+[ext_resource type="Theme" uid="uid://b3pyp5hxx8e7m" path="res://Materials/tema.tres" id="4_mnaoq"]
+[ext_resource type="AudioStream" uid="uid://dmso0i27g54bw" path="res://Assets/Music/Just Add Water.mp3" id="8_p8l7h"]
+[ext_resource type="Texture2D" uid="uid://pvivt0m5g8fq" path="res://Assets/sprites/spr_recepcao.png" id="9_rlw2f"]
+[ext_resource type="FontFile" uid="uid://bul547wt42nd7" path="res://Assets/Fonts/tinypixel.otf" id="10_rc7ky"]
+[ext_resource type="Script" path="res://Scenes/spawner.gd" id="11_6natk"]
+[ext_resource type="Texture2D" uid="uid://c1xfdo8jkctxu" path="res://icon.svg" id="11_wyiu0"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_2ekyh"]
+vertices = PackedVector2Array(1053.98, 2.96094, 1053.01, 635.063, -0.976563, 641.93, -0.0078125, -0.960938)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-11, 652, 1063, 645, 1064, -7, -10, -11)])
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tifmb"]
+texture = ExtResource("2_y4pm7")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_dejs8"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_tifmb")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t32hd"]
+texture = ExtResource("3_sbdx7")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8jsab"]
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_t32hd")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_os8fj"]
+texture = ExtResource("3_bh8xy")
+texture_region_size = Vector2i(96, 96)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_kmlcf"]
+tile_size = Vector2i(96, 96)
+sources/0 = SubResource("TileSetAtlasSource_os8fj")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqsbl"]
+bg_color = Color(0.422847, 0.673094, 0.408637, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_qx87j"]
+Panel/styles/panel = SubResource("StyleBoxFlat_iqsbl")
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_6omsm")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_2ekyh")
+
+[node name="floor" type="TileMapLayer" parent="NavigationRegion2D"]
+unique_name_in_owner = true
+tile_set = SubResource("TileSet_dejs8")
+
+[node name="smol_select" type="TileMapLayer" parent="NavigationRegion2D"]
+unique_name_in_owner = true
+use_parent_material = true
+tile_set = SubResource("TileSet_8jsab")
+
+[node name="smol_equip" type="TileMapLayer" parent="NavigationRegion2D"]
+unique_name_in_owner = true
+use_parent_material = true
+tile_set = ExtResource("2_vwq03")
+
+[node name="beeg_select" type="TileMapLayer" parent="NavigationRegion2D"]
+unique_name_in_owner = true
+use_parent_material = true
+tile_set = SubResource("TileSet_kmlcf")
+
+[node name="beeg_equip" type="TileMapLayer" parent="NavigationRegion2D"]
+unique_name_in_owner = true
+use_parent_material = true
+tile_set = ExtResource("3_f2wtw")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_p8l7h")
+autoplay = true
+parameters/looping = true
+
+[node name="SprRecepcao" type="Sprite2D" parent="."]
+position = Vector2(64, 528)
+texture = ExtResource("9_rlw2f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="selectedItem" type="RichTextLabel" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 18.0
+offset_top = 17.0
+offset_right = 1037.0
+offset_bottom = 149.0
+theme = ExtResource("4_mnaoq")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 802.0
+offset_top = 548.0
+offset_right = 1007.0
+offset_bottom = 598.0
+theme = ExtResource("4_mnaoq")
+theme_override_font_sizes/font_size = 19
+text = "Abrir academia"
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_left = 838.0
+offset_top = 26.0
+offset_right = 1014.0
+offset_bottom = 85.0
+theme = SubResource("Theme_qx87j")
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 11.0
+offset_right = 165.0
+offset_bottom = 51.0
+theme_override_fonts/font = ExtResource("10_rc7ky")
+theme_override_font_sizes/font_size = 35
+text = "$ 0.00"
+
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2(164, 612)
+script = ExtResource("11_6natk")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(972, 144)
+scale = Vector2(0.0390625, 0.0390625)
+texture = ExtResource("11_wyiu0")

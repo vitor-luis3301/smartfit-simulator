@@ -1,0 +1,4 @@
+[gd_resource type="SystemFont" format=3 uid="uid://3endmkcqio3r"]
+
+[resource]
+font_names = PackedStringArray("Comic Sans MS")

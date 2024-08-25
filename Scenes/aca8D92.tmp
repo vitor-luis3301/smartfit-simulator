@@ -1,0 +1,90 @@
+[gd_scene load_steps=17 format=3 uid="uid://dsiqfg5wnspu4"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_6omsm"]
+[ext_resource type="Texture2D" uid="uid://dj08bqfrkcjq3" path="res://Assets/sprites/pixil-frame-0.png" id="2_53ugc"]
+[ext_resource type="TileSet" uid="uid://d4lgjqe5qdgp4" path="res://Materials/academia.tres" id="2_vwq03"]
+[ext_resource type="Texture2D" uid="uid://67pxb6v3mr3v" path="res://Assets/sprites/pixil-frame-0 (2).png" id="3_bh8xy"]
+[ext_resource type="TileSet" uid="uid://2rv7ruq0wfpg" path="res://Materials/equipments.tres" id="3_f2wtw"]
+[ext_resource type="Texture2D" uid="uid://bavtq6dfw0gi1" path="res://Assets/sprites/pixil-frame-0 (1).png" id="3_sbdx7"]
+[ext_resource type="Theme" uid="uid://b3pyp5hxx8e7m" path="res://Materials/tema.tres" id="4_mnaoq"]
+[ext_resource type="PackedScene" uid="uid://cdivctxj7bb8i" path="res://NPC.tscn" id="7_yeh00"]
+[ext_resource type="AudioStream" uid="uid://dmso0i27g54bw" path="res://Assets/Music/Just Add Water.mp3" id="8_p8l7h"]
+[ext_resource type="Texture2D" uid="uid://c1xfdo8jkctxu" path="res://icon.svg" id="10_815tb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2n1e"]
+texture = ExtResource("2_53ugc")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_dejs8"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_e2n1e")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t32hd"]
+texture = ExtResource("3_sbdx7")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8jsab"]
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_t32hd")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_os8fj"]
+texture = ExtResource("3_bh8xy")
+texture_region_size = Vector2i(96, 96)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_kmlcf"]
+tile_size = Vector2i(96, 96)
+sources/0 = SubResource("TileSetAtlasSource_os8fj")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="map" type="Node2D" parent="."]
+script = ExtResource("1_6omsm")
+
+[node name="Layer-1" type="TileMapLayer" parent="map"]
+tile_set = SubResource("TileSet_dejs8")
+
+[node name="Layer0" type="TileMapLayer" parent="map"]
+use_parent_material = true
+tile_set = SubResource("TileSet_8jsab")
+
+[node name="Layer1" type="TileMapLayer" parent="map"]
+use_parent_material = true
+tile_set = ExtResource("2_vwq03")
+
+[node name="Layer2" type="TileMapLayer" parent="map"]
+use_parent_material = true
+tile_set = SubResource("TileSet_kmlcf")
+
+[node name="Layer3" type="TileMapLayer" parent="map"]
+use_parent_material = true
+tile_set = ExtResource("3_f2wtw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="selectedItem" type="RichTextLabel" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 18.0
+offset_top = 17.0
+offset_right = 1037.0
+offset_bottom = 149.0
+theme = ExtResource("4_mnaoq")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="CharacterBody2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("7_yeh00")]
+position = Vector2(213, 107)
+target = NodePath("../Icon")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_p8l7h")
+autoplay = true
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(877, 108)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("10_815tb")

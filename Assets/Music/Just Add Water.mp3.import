@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dmso0i27g54bw"
+path="res://.godot/imported/Just Add Water.mp3-21de93ccf046a9df0fc1169d8210c04b.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Just Add Water.mp3"
+dest_files=["res://.godot/imported/Just Add Water.mp3-21de93ccf046a9df0fc1169d8210c04b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
