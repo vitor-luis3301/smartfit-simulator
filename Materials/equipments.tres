@@ -1,10 +1,10 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://2rv7ruq0wfpg"]
 
-[ext_resource type="Texture2D" uid="uid://dqj5v1n00h4o" path="res://Assets/sprites/spr_esteira.png" id="1_m5ewo"]
-[ext_resource type="Texture2D" uid="uid://dsygnxyvblbt8" path="res://Assets/sprites/spr_tapete.png" id="2_jigf8"]
+[ext_resource type="Texture2D" uid="uid://dqj5v1n00h4o" path="res://Assets/sprites/Equipment/spr_esteira.png" id="1_uy2d7"]
+[ext_resource type="Texture2D" uid="uid://dsygnxyvblbt8" path="res://Assets/sprites/Equipment/spr_tapete.png" id="2_jigf8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gixdr"]
-texture = ExtResource("1_m5ewo")
+texture = ExtResource("1_uy2d7")
 texture_region_size = Vector2i(96, 96)
 0:0/0 = 0
 

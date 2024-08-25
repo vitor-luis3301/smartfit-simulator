@@ -4,6 +4,8 @@ extends Node2D
 @export var GridSizeY = 20
 @export var Dic = {}
 
+var spawnedEntity
+
 var selectedItem = 0
 
 var items = [
@@ -13,7 +15,7 @@ var items = [
 	"mat"
 ]
 
-@onready var equipment = preload("res://Sample_equipment.tscn")
+@onready var equipment = preload("res://Objects/Sample_equipment.tscn")
 
 func _ready() -> void:
 	# create floor
@@ -25,22 +27,24 @@ func _ready() -> void:
 			%floor.set_cell(Vector2(x, y), 0, Vector2i(0, 0), 0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var mouse = get_global_mouse_position()
-	
 	# change between small tiles and big tiles
+	var currentselect = %smol_select
+	var currentequip = %smol_equip
+	
 	var tile = %smol_select.local_to_map(mouse)
 	%beeg_select.clear()
 	if selectedItem >= 2:
+		currentselect = %beeg_select
+		currentequip = %beeg_equip
 		tile = %beeg_select.local_to_map(mouse)
 		%smol_select.clear()
 	
 	# add marker for every tile that mouse is on top of
 	for x in GridSizeX:
 		for y in GridSizeY:
-			%smol_select.erase_cell(Vector2(x,y))
-			if selectedItem >= 2:
-				%beeg_select.erase_cell(Vector2(x,y))
+			currentselect.erase_cell(Vector2(x,y))
 	
 	# delete marker if mouse is not on tile
 	if Dic.has(str(tile)):
@@ -58,14 +62,15 @@ func _process(delta: float) -> void:
 		selectedItem = 0
 	
 	# Add equipment to the map if left mouse button is clicked
-	var tilesize : int
-	if Input.is_action_pressed("left_button"):
-		%smol_equip.set_cell(tile, selectedItem, Vector2i(0,0), 0)
-		if selectedItem >= 2:
-			%beeg_equip.set_cell(tile, selectedItem-2, Vector2i(0,0), 0)
-			tilesize = 96
-		tilesize = 32
-		# add code to add `Sample_equipment` with `collision`'s size as tilesize
+	var tilesize = 32 # change sample_equipments collisions' sizes to this
+	if selectedItem >= 2:
+		tilesize = 96
+	
+	var equipPosition = tilesize * tile + Vector2i(tilesize/2, tilesize/2)
+	
+	if Input.is_action_just_pressed("left_button"):
+		currentequip.set_cell(tile, selectedItem, Vector2i(0,0), 0)
+		spawnedEntity = spawn_equipmens(tilesize, items[selectedItem], equipPosition)
 	
 	# Remove equipment to the map if right mouse button is clicked
 	if Input.is_action_pressed("right_button"):
@@ -78,9 +83,23 @@ func _process(delta: float) -> void:
 	else:
 		%selectedItem.text = "Item: " + items[selectedItem]
 	
-	# start game when button pressed
-	if %Button.button_pressed:
-		$NavigationRegion2D.bake_navigation_polygon()
-	
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
+
+func spawn_equipmens(size, type, mousePos):
+	var newEquip = equipment.instantiate()
+	newEquip.position = mousePos
+	newEquip.get_node("collision").shape.size = Vector2(size, size)
+	
+	add_child(newEquip)
+	print(newEquip)
+	
+	return newEquip
+
+func delete_equipments():
+	pass
+
+func _on_button_pressed():
+	$NavigationRegion2D.bake_navigation_polygon()
+	await $NavigationRegion2D.bake_finished
+	$Spawner.spawn()

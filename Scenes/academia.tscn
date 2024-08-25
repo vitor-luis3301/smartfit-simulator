@@ -2,21 +2,21 @@
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_6omsm"]
 [ext_resource type="TileSet" uid="uid://d4lgjqe5qdgp4" path="res://Materials/academia.tres" id="2_vwq03"]
-[ext_resource type="Texture2D" uid="uid://c3dnwue1dnpl3" path="res://Assets/sprites/pixil-frame-0 (4).png" id="2_y4pm7"]
-[ext_resource type="Texture2D" uid="uid://67pxb6v3mr3v" path="res://Assets/sprites/pixil-frame-0 (2).png" id="3_bh8xy"]
+[ext_resource type="Texture2D" uid="uid://c3dnwue1dnpl3" path="res://Assets/sprites/Ambient/pixil-frame-0 (4).png" id="2_y4pm7"]
+[ext_resource type="Texture2D" uid="uid://67pxb6v3mr3v" path="res://Assets/sprites/UI/pixil-frame-0 (2).png" id="3_bh8xy"]
 [ext_resource type="TileSet" uid="uid://2rv7ruq0wfpg" path="res://Materials/equipments.tres" id="3_f2wtw"]
-[ext_resource type="Texture2D" uid="uid://bavtq6dfw0gi1" path="res://Assets/sprites/pixil-frame-0 (1).png" id="3_sbdx7"]
+[ext_resource type="Texture2D" uid="uid://bavtq6dfw0gi1" path="res://Assets/sprites/UI/pixil-frame-0 (1).png" id="3_sbdx7"]
 [ext_resource type="Theme" uid="uid://b3pyp5hxx8e7m" path="res://Materials/tema.tres" id="4_mnaoq"]
 [ext_resource type="AudioStream" uid="uid://dmso0i27g54bw" path="res://Assets/Music/Just Add Water.mp3" id="8_p8l7h"]
-[ext_resource type="Texture2D" uid="uid://pvivt0m5g8fq" path="res://Assets/sprites/spr_recepcao.png" id="9_rlw2f"]
+[ext_resource type="Texture2D" uid="uid://pvivt0m5g8fq" path="res://Assets/sprites/Ambient/spr_recepcao.png" id="9_rlw2f"]
 [ext_resource type="FontFile" uid="uid://bul547wt42nd7" path="res://Assets/Fonts/tinypixel.otf" id="10_rc7ky"]
 [ext_resource type="Script" path="res://Scenes/spawner.gd" id="11_6natk"]
 [ext_resource type="Texture2D" uid="uid://c1xfdo8jkctxu" path="res://icon.svg" id="11_wyiu0"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2ekyh"]
-vertices = PackedVector2Array(1053.98, 2.96094, 1053.01, 635.063, -0.976563, 641.93, -0.0078125, -0.960938)
+vertices = PackedVector2Array(1056.98, 0, 1056.02, 640, -0.976563, 640, -0.0078125, -0.992188)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-11, 652, 1063, 645, 1064, -7, -10, -11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-11, 650, 1066, 650, 1067, -10, -10, -11)])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tifmb"]
 texture = ExtResource("2_y4pm7")
@@ -46,7 +46,7 @@ tile_size = Vector2i(96, 96)
 sources/0 = SubResource("TileSetAtlasSource_os8fj")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_10pdm"]
-size = Vector2(226, 69)
+size = Vector2(288, 160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oh4mw"]
 size = Vector2(130, 225)
@@ -102,17 +102,20 @@ autoplay = true
 parameters/looping = true
 
 [node name="SprRecepcao" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(64, 528)
 texture = ExtResource("9_rlw2f")
 
 [node name="ProtectedArea" type="Area2D" parent="."]
 position = Vector2(802, 548)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ProtectedArea"]
-position = Vector2(103, 24.5)
+[node name="button_protec" type="CollisionShape2D" parent="ProtectedArea"]
+unique_name_in_owner = true
+position = Vector2(110, 12)
 shape = SubResource("RectangleShape2D_10pdm")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="ProtectedArea"]
+[node name="reception_protec" type="CollisionShape2D" parent="ProtectedArea"]
+unique_name_in_owner = true
 position = Vector2(-738, -19.5)
 shape = SubResource("RectangleShape2D_oh4mw")
 
@@ -145,7 +148,7 @@ text = "Abrir academia"
 offset_left = 838.0
 offset_top = 26.0
 offset_right = 1014.0
-offset_bottom = 85.0
+offset_bottom = 83.0
 theme = SubResource("Theme_qx87j")
 
 [node name="Label" type="Label" parent="CanvasLayer/Panel"]
@@ -164,5 +167,7 @@ script = ExtResource("11_6natk")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(972, 144)
-scale = Vector2(0.0390625, 0.0390625)
+scale = Vector2(0.0171875, 0.0171875)
 texture = ExtResource("11_wyiu0")
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
