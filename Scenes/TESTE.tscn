@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://dcwvbya11s82t"]
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+offset_top = 121.0
+offset_right = 1057.0
+offset_bottom = 640.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(1057, 519)
+layout_mode = 2
+
+[node name="Buttons1" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/Buttons1"]
+custom_minimum_size = Vector2(261, 261)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="ScrollContainer/VBoxContainer/Buttons1"]
+custom_minimum_size = Vector2(261, 261)
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="ScrollContainer/VBoxContainer/Buttons1"]
+custom_minimum_size = Vector2(261, 261)
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="ScrollContainer/VBoxContainer/Buttons1"]
+custom_minimum_size = Vector2(261, 261)
+layout_mode = 2
+
+[node name="Descriptions1" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Descriptions1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Peso pequeno
+$ 200
+dificuldade: fácil"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/Descriptions1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Peso pequeno
+$ 200
+dificuldade: fácil"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/Descriptions1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Peso pequeno
+$ 200
+dificuldade: fácil"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="ScrollContainer/VBoxContainer/Descriptions1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Peso pequeno
+$ 200
+dificuldade: fácil"
+horizontal_alignment = 1
+
+[node name="Buttons2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/Buttons2"]
+custom_minimum_size = Vector2(261, 261)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="ScrollContainer/VBoxContainer/Buttons2"]
+custom_minimum_size = Vector2(261, 261)
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="ScrollContainer/VBoxContainer/Buttons2"]
+custom_minimum_size = Vector2(261, 261)
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="ScrollContainer/VBoxContainer/Buttons2"]
+custom_minimum_size = Vector2(261, 261)
+layout_mode = 2
+
+[node name="Descriptions2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Descriptions2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Peso pequeno
+$ 200
+dificuldade: fácil"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/Descriptions2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Peso pequeno
+$ 200
+dificuldade: fácil"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/Descriptions2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Peso pequeno
+$ 200
+dificuldade: fácil"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="ScrollContainer/VBoxContainer/Descriptions2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Peso pequeno
+$ 200
+dificuldade: fácil"
+horizontal_alignment = 1

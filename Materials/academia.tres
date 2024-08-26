@@ -4,17 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://b7tvv8mhfqbae" path="res://Assets/sprites/Equipment/spr_pesoGrande.png" id="2_gdf8p"]
 [ext_resource type="Texture2D" uid="uid://8wbuwwlt8ue3" path="res://Assets/sprites/Equipment/spr_pesoPequeno.png" id="2_s12al"]
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6oo6u"]
+texture = ExtResource("2_s12al")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b5fui"]
 texture = ExtResource("1_6jgat")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 0:0/0/custom_data_0 = "med_weight"
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6oo6u"]
-texture = ExtResource("2_s12al")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dp3f3"]
 texture = ExtResource("2_gdf8p")
@@ -28,6 +28,6 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 custom_data_layer_0/name = "equipment"
 custom_data_layer_0/type = 4
-sources/0 = SubResource("TileSetAtlasSource_b5fui")
 sources/2 = SubResource("TileSetAtlasSource_dp3f3")
-sources/1 = SubResource("TileSetAtlasSource_6oo6u")
+sources/1 = SubResource("TileSetAtlasSource_b5fui")
+sources/0 = SubResource("TileSetAtlasSource_6oo6u")

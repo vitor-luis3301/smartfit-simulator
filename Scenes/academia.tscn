@@ -2,19 +2,19 @@
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_6omsm"]
 [ext_resource type="TileSet" uid="uid://d4lgjqe5qdgp4" path="res://Materials/academia.tres" id="2_vwq03"]
-[ext_resource type="Texture2D" uid="uid://c3dnwue1dnpl3" path="res://Assets/sprites/Ambient/pixil-frame-0 (4).png" id="2_y4pm7"]
-[ext_resource type="Texture2D" uid="uid://67pxb6v3mr3v" path="res://Assets/sprites/UI/pixil-frame-0 (2).png" id="3_bh8xy"]
 [ext_resource type="TileSet" uid="uid://2rv7ruq0wfpg" path="res://Materials/equipments.tres" id="3_f2wtw"]
 [ext_resource type="StyleBox" uid="uid://by7hulmnylyvy" path="res://Scenes/money.tres" id="3_m5qqx"]
-[ext_resource type="Texture2D" uid="uid://bavtq6dfw0gi1" path="res://Assets/sprites/UI/pixil-frame-0 (1).png" id="3_sbdx7"]
 [ext_resource type="Theme" uid="uid://b3pyp5hxx8e7m" path="res://Materials/tema.tres" id="4_mnaoq"]
 [ext_resource type="Script" path="res://Scenes/protecc.gd" id="5_gfbc7"]
+[ext_resource type="Texture2D" uid="uid://dhnk1w6lh2qo2" path="res://Assets/sprites/Ambient/spr_floor.png" id="6_qp7jt"]
+[ext_resource type="Texture2D" uid="uid://osu2jvrba2vv" path="res://Assets/sprites/UI/spr_select32.png" id="7_w35rf"]
 [ext_resource type="Texture2D" uid="uid://c4opefrodcmuc" path="res://Assets/sprites/UI/spr_select48.png" id="8_4ser3"]
 [ext_resource type="AudioStream" uid="uid://dmso0i27g54bw" path="res://Assets/Music/Just Add Water.mp3" id="8_p8l7h"]
 [ext_resource type="Texture2D" uid="uid://878vbi5qy53e" path="res://Assets/sprites/Equipment/spr_pesoGiga.png" id="8_qj118"]
 [ext_resource type="Texture2D" uid="uid://pvivt0m5g8fq" path="res://Assets/sprites/Ambient/spr_recepcao.png" id="9_rlw2f"]
 [ext_resource type="FontFile" uid="uid://bul547wt42nd7" path="res://Assets/Fonts/tinypixel.otf" id="10_rc7ky"]
 [ext_resource type="Script" path="res://Scenes/spawner.gd" id="11_6natk"]
+[ext_resource type="Texture2D" uid="uid://4ubgd7muu1q" path="res://Assets/sprites/UI/spr_select96.png" id="11_wddkv"]
 [ext_resource type="Texture2D" uid="uid://c1xfdo8jkctxu" path="res://icon.svg" id="11_wyiu0"]
 [ext_resource type="Script" path="res://Scenes/cursor.gd" id="14_sfrkn"]
 
@@ -27,7 +27,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-11, 650, 1066, 650, 1067, -10, -10, -11)])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tifmb"]
-texture = ExtResource("2_y4pm7")
+texture = ExtResource("6_qp7jt")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
@@ -36,7 +36,7 @@ tile_size = Vector2i(128, 128)
 sources/0 = SubResource("TileSetAtlasSource_tifmb")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t32hd"]
-texture = ExtResource("3_sbdx7")
+texture = ExtResource("7_w35rf")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
@@ -65,7 +65,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_aygtt")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_os8fj"]
-texture = ExtResource("3_bh8xy")
+texture = ExtResource("11_wddkv")
 texture_region_size = Vector2i(96, 96)
 0:0/0 = 0
 

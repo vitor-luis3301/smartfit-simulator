@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7oy0ypnryodx"]
+[gd_scene load_steps=9 format=3 uid="uid://b7oy0ypnryodx"]
 
 [ext_resource type="Script" path="res://Scenes/menu.gd" id="1_emimy"]
 [ext_resource type="Theme" uid="uid://b3pyp5hxx8e7m" path="res://Materials/tema.tres" id="1_l4he2"]
-[ext_resource type="Texture2D" uid="uid://cm33ob645m1fe" path="res://Assets/sprites/UI/screenshot-2024-08-21T13_50_31.769Z-removebg-preview.png" id="2_tsgdd"]
 [ext_resource type="Texture2D" uid="uid://djhcq7gfva5w7" path="res://Assets/sprites/Characters/spr_mlkDosPesos.png" id="3_7sa5w"]
 
 [sub_resource type="Gradient" id="Gradient_5vd8o"]
@@ -121,7 +120,6 @@ text = "E"
 [node name="TremboTec Academia" type="Sprite2D" parent="."]
 position = Vector2(892.674, 122.5)
 scale = Vector2(1.25281, 1.25281)
-texture = ExtResource("2_tsgdd")
 
 [node name="mlkDosPesos" type="Sprite2D" parent="."]
 position = Vector2(704, 404)
