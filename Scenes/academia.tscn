@@ -1,40 +1,25 @@
-[gd_scene load_steps=27 format=4 uid="uid://dsiqfg5wnspu4"]
+[gd_scene load_steps=34 format=4 uid="uid://dsiqfg5wnspu4"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_6omsm"]
 [ext_resource type="TileSet" uid="uid://d4lgjqe5qdgp4" path="res://Materials/academia.tres" id="2_vwq03"]
 [ext_resource type="Texture2D" uid="uid://c3dnwue1dnpl3" path="res://Assets/sprites/Ambient/pixil-frame-0 (4).png" id="2_y4pm7"]
 [ext_resource type="Texture2D" uid="uid://67pxb6v3mr3v" path="res://Assets/sprites/UI/pixil-frame-0 (2).png" id="3_bh8xy"]
 [ext_resource type="TileSet" uid="uid://2rv7ruq0wfpg" path="res://Materials/equipments.tres" id="3_f2wtw"]
+[ext_resource type="StyleBox" uid="uid://by7hulmnylyvy" path="res://Scenes/money.tres" id="3_m5qqx"]
 [ext_resource type="Texture2D" uid="uid://bavtq6dfw0gi1" path="res://Assets/sprites/UI/pixil-frame-0 (1).png" id="3_sbdx7"]
 [ext_resource type="Theme" uid="uid://b3pyp5hxx8e7m" path="res://Materials/tema.tres" id="4_mnaoq"]
 [ext_resource type="Script" path="res://Scenes/protecc.gd" id="5_gfbc7"]
+[ext_resource type="Texture2D" uid="uid://c4opefrodcmuc" path="res://Assets/sprites/UI/spr_select48.png" id="8_4ser3"]
 [ext_resource type="AudioStream" uid="uid://dmso0i27g54bw" path="res://Assets/Music/Just Add Water.mp3" id="8_p8l7h"]
+[ext_resource type="Texture2D" uid="uid://878vbi5qy53e" path="res://Assets/sprites/Equipment/spr_pesoGiga.png" id="8_qj118"]
 [ext_resource type="Texture2D" uid="uid://pvivt0m5g8fq" path="res://Assets/sprites/Ambient/spr_recepcao.png" id="9_rlw2f"]
 [ext_resource type="FontFile" uid="uid://bul547wt42nd7" path="res://Assets/Fonts/tinypixel.otf" id="10_rc7ky"]
 [ext_resource type="Script" path="res://Scenes/spawner.gd" id="11_6natk"]
 [ext_resource type="Texture2D" uid="uid://c1xfdo8jkctxu" path="res://icon.svg" id="11_wyiu0"]
 [ext_resource type="Script" path="res://Scenes/cursor.gd" id="14_sfrkn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_10pdm"]
-size = Vector2(256, 96)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oh4mw"]
-size = Vector2(130, 225)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqsbl"]
-bg_color = Color(0.422847, 0.673094, 0.408637, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [sub_resource type="Theme" id="Theme_qx87j"]
-Panel/styles/panel = SubResource("StyleBoxFlat_iqsbl")
+Panel/styles/panel = ExtResource("3_m5qqx")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2ekyh"]
 vertices = PackedVector2Array(1056.98, 0, 1056.02, 640, -0.976563, 640, -0.0078125, -0.992188)
@@ -57,7 +42,27 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_8jsab"]
 tile_size = Vector2i(32, 32)
-sources/1 = SubResource("TileSetAtlasSource_t32hd")
+sources/0 = SubResource("TileSetAtlasSource_t32hd")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_txoui"]
+texture = ExtResource("8_4ser3")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_apn7p"]
+tile_size = Vector2i(48, 48)
+sources/0 = SubResource("TileSetAtlasSource_txoui")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aygtt"]
+texture = ExtResource("8_qj118")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
+
+[sub_resource type="TileSet" id="TileSet_ba61e"]
+tile_size = Vector2i(48, 48)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_aygtt")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_os8fj"]
 texture = ExtResource("3_bh8xy")
@@ -68,25 +73,20 @@ texture_region_size = Vector2i(96, 96)
 tile_size = Vector2i(96, 96)
 sources/0 = SubResource("TileSetAtlasSource_os8fj")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10pdm"]
+size = Vector2(256, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oh4mw"]
+size = Vector2(128, 224)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7f4ux"]
+size = Vector2(480, 64)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_kbnbg"]
 radius = 1.0
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_6omsm")
-
-[node name="ProtectedArea" type="Area2D" parent="."]
-position = Vector2(802, 548)
-script = ExtResource("5_gfbc7")
-
-[node name="button_protec" type="CollisionShape2D" parent="ProtectedArea"]
-unique_name_in_owner = true
-position = Vector2(126, 44)
-shape = SubResource("RectangleShape2D_10pdm")
-
-[node name="reception_protec" type="CollisionShape2D" parent="ProtectedArea"]
-unique_name_in_owner = true
-position = Vector2(-738, -19.5)
-shape = SubResource("RectangleShape2D_oh4mw")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -151,14 +151,17 @@ tile_set = SubResource("TileSet_8jsab")
 [node name="smol_equip" type="TileMapLayer" parent="NavigationRegion2D"]
 unique_name_in_owner = true
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAZABAAAQAAAAAAAAAaABAAAQAAAAAAAAAYABAAAQAAAAAAAAAYABEAAQAAAAAAAAAYABIAAQAAAAAAAAAbABAAAQAAAAAAAAAcABAAAQAAAAAAAAAdABAAAQAAAAAAAAAeABAAAQAAAAAAAAAfABAAAQAAAAAAAAAgABAAAQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAZABAAAQAAAAAAAAAaABAAAQAAAAAAAAAYABAAAQAAAAAAAAAYABEAAQAAAAAAAAAYABIAAQAAAAAAAAAbABAAAQAAAAAAAAAcABAAAQAAAAAAAAAdABAAAQAAAAAAAAAeABAAAQAAAAAAAAAfABAAAQAAAAAAAAAgABAAAQAAAAAAAAAYABMAAQAAAAAAAAA=")
 tile_set = ExtResource("2_vwq03")
 
 [node name="mid_select" type="TileMapLayer" parent="NavigationRegion2D"]
 unique_name_in_owner = true
+tile_set = SubResource("TileSet_apn7p")
 
 [node name="mid_equip" type="TileMapLayer" parent="NavigationRegion2D"]
 unique_name_in_owner = true
+tile_map_data = PackedByteArray("AAADAAkAAAAAAAAAAAADAAgAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAADAAoAAAAAAAAAAAADAAsAAAAAAAAAAAAQAAoAAAAAAAAAAAARAAoAAAAAAAAAAAASAAoAAAAAAAAAAAATAAoAAAAAAAAAAAAUAAoAAAAAAAAAAAAVAAoAAAAAAAAAAAAPAAwAAAAAAAAAAAAPAAsAAAAAAAAAAAAPAAoAAAAAAAAAAAADAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAAFAAwAAAAAAAAAAAAGAAwAAAAAAAAAAAAHAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAwAAAAAAAAAAAALAAwAAAAAAAAAAAAMAAwAAAAAAAAAAAANAAwAAAAAAAAAAAAOAAwAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_ba61e")
 
 [node name="beeg_select" type="TileMapLayer" parent="NavigationRegion2D"]
 unique_name_in_owner = true
@@ -168,7 +171,7 @@ tile_set = SubResource("TileSet_kmlcf")
 [node name="beeg_equip" type="TileMapLayer" parent="NavigationRegion2D"]
 unique_name_in_owner = true
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAQAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAQAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAA=")
 tile_set = ExtResource("3_f2wtw")
 
 [node name="Icon" type="Sprite2D" parent="."]
@@ -184,12 +187,31 @@ texture = ExtResource("9_rlw2f")
 position = Vector2(62, 668)
 script = ExtResource("11_6natk")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="ProtectedArea" type="Area2D" parent="."]
+position = Vector2(802, 548)
+script = ExtResource("5_gfbc7")
+
+[node name="button_protec" type="CollisionShape2D" parent="ProtectedArea"]
+unique_name_in_owner = true
+position = Vector2(126, 44)
+shape = SubResource("RectangleShape2D_10pdm")
+
+[node name="reception_protec" type="CollisionShape2D" parent="ProtectedArea"]
+unique_name_in_owner = true
+position = Vector2(-738, -20)
+shape = SubResource("RectangleShape2D_oh4mw")
+
+[node name="bottom_protec" type="CollisionShape2D" parent="ProtectedArea"]
+unique_name_in_owner = true
+position = Vector2(-370, 60)
+shape = SubResource("RectangleShape2D_7f4ux")
+
+[node name="Cursor" type="Area2D" parent="."]
 script = ExtResource("14_sfrkn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor"]
 shape = SubResource("CircleShape2D_kbnbg")
 
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
 [connection signal="mouse_entered" from="ProtectedArea" to="ProtectedArea" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="ProtectedArea" to="ProtectedArea" method="_on_mouse_exited"]
-[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

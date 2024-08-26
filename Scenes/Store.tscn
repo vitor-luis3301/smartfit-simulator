@@ -1,4 +1,20 @@
-[gd_scene format=3 uid="uid://wvaxw7bftyd0"]
+[gd_scene load_steps=14 format=3 uid="uid://wvaxw7bftyd0"]
+
+[ext_resource type="Theme" uid="uid://b3pyp5hxx8e7m" path="res://Materials/tema.tres" id="1_1cnv2"]
+[ext_resource type="Theme" uid="uid://rj1bhpdaknti" path="res://Materials/Store.tres" id="1_4xpt5"]
+[ext_resource type="Texture2D" uid="uid://8wbuwwlt8ue3" path="res://Assets/sprites/Equipment/spr_pesoPequeno.png" id="2_c437m"]
+[ext_resource type="Texture2D" uid="uid://b1w0h872lqisl" path="res://Assets/sprites/Equipment/spr_pesoMedio.png" id="3_2t5yu"]
+[ext_resource type="Texture2D" uid="uid://b7tvv8mhfqbae" path="res://Assets/sprites/Equipment/spr_pesoGrande.png" id="4_52cfn"]
+[ext_resource type="Texture2D" uid="uid://878vbi5qy53e" path="res://Assets/sprites/Equipment/spr_pesoGiga.png" id="5_mvxua"]
+[ext_resource type="Texture2D" uid="uid://dqj5v1n00h4o" path="res://Assets/sprites/Equipment/spr_esteira.png" id="6_w7igk"]
+[ext_resource type="Texture2D" uid="uid://dsygnxyvblbt8" path="res://Assets/sprites/Equipment/spr_tapete.png" id="7_bb68g"]
+[ext_resource type="Texture2D" uid="uid://c6rbamqd21dsb" path="res://Assets/sprites/UI/spr_itemIndisponivel.png" id="8_sb2gr"]
+[ext_resource type="Texture2D" uid="uid://b7c1iqwomiabj" path="res://Assets/sprites/UI/Store.png" id="10_acycc"]
+[ext_resource type="StyleBox" uid="uid://by7hulmnylyvy" path="res://Scenes/money.tres" id="11_48ofl"]
+[ext_resource type="FontFile" uid="uid://bul547wt42nd7" path="res://Assets/Fonts/tinypixel.otf" id="11_ujwq2"]
+
+[sub_resource type="Theme" id="Theme_4qcln"]
+Panel/styles/panel = ExtResource("11_48ofl")
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -7,3 +23,252 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1056.0
+offset_bottom = 641.0
+
+[node name="Store" type="Sprite2D" parent="."]
+position = Vector2(524, 0)
+scale = Vector2(0.205, 0.205)
+texture = ExtResource("10_acycc")
+offset = Vector2(0, 400)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_top = 174.0
+offset_right = 1054.0
+offset_bottom = 814.0
+
+[node name="Items" type="Control" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="Button1" type="Button" parent="ScrollContainer/Items"]
+layout_mode = 1
+offset_right = 250.0
+offset_bottom = 250.0
+theme = ExtResource("1_4xpt5")
+icon = ExtResource("2_c437m")
+expand_icon = true
+
+[node name="Label" type="Label" parent="ScrollContainer/Items/Button1"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 182.0
+offset_right = 2136.0
+offset_bottom = 463.0
+scale = Vector2(0.08, 0.08)
+theme = ExtResource("1_1cnv2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -50
+theme_override_font_sizes/font_size = 189
+text = "Peso pequeno
+$ 200
+dificuldade: fácil"
+horizontal_alignment = 1
+
+[node name="Button2" type="Button" parent="ScrollContainer/Items"]
+layout_mode = 0
+offset_left = 269.474
+offset_right = 519.474
+offset_bottom = 250.0
+theme = ExtResource("1_4xpt5")
+icon = ExtResource("3_2t5yu")
+expand_icon = true
+
+[node name="Label2" type="Label" parent="ScrollContainer/Items/Button2"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 182.0
+offset_right = 2410.0
+offset_bottom = 662.0
+scale = Vector2(0.08, 0.08)
+theme = ExtResource("1_1cnv2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -50
+theme_override_font_sizes/font_size = 189
+text = "Peso médio
+$ 400
+dificuldade: fácil"
+horizontal_alignment = 1
+
+[node name="Button3" type="Button" parent="ScrollContainer/Items"]
+layout_mode = 0
+offset_left = 532.632
+offset_right = 782.632
+offset_bottom = 250.0
+theme = ExtResource("1_4xpt5")
+icon = ExtResource("4_52cfn")
+alignment = 2
+expand_icon = true
+
+[node name="Label3" type="Label" parent="ScrollContainer/Items/Button3"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 182.0
+offset_right = 1823.0
+offset_bottom = 463.0
+scale = Vector2(0.08, 0.08)
+theme = ExtResource("1_1cnv2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -50
+theme_override_font_sizes/font_size = 189
+text = "Peso grande
+$ 600
+dificuldade: médio"
+horizontal_alignment = 1
+
+[node name="Button4" type="Button" parent="ScrollContainer/Items"]
+layout_mode = 0
+offset_left = 794.737
+offset_right = 1044.74
+offset_bottom = 250.0
+theme = ExtResource("1_4xpt5")
+icon = ExtResource("5_mvxua")
+expand_icon = true
+
+[node name="Label4" type="Label" parent="ScrollContainer/Items/Button4"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 182.0
+offset_right = 2207.0
+offset_bottom = 463.0
+scale = Vector2(0.08, 0.08)
+theme = ExtResource("1_1cnv2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -50
+theme_override_font_sizes/font_size = 189
+text = "Peso Giga
+$ 800
+dificuldade: difícil"
+horizontal_alignment = 1
+
+[node name="Button5" type="Button" parent="ScrollContainer/Items"]
+layout_mode = 0
+offset_top = 268.421
+offset_right = 250.0
+offset_bottom = 518.421
+theme = ExtResource("1_4xpt5")
+icon = ExtResource("6_w7igk")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Label5" type="Label" parent="ScrollContainer/Items/Button5"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 245.0
+offset_right = 2207.0
+offset_bottom = 526.0
+scale = Vector2(0.08, 0.08)
+theme = ExtResource("1_1cnv2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -50
+theme_override_font_sizes/font_size = 189
+text = "Esteira
+$ 1200
+dificuldade: Você decide"
+horizontal_alignment = 1
+
+[node name="Button6" type="Button" parent="ScrollContainer/Items"]
+layout_mode = 0
+offset_left = 267.368
+offset_top = 268.421
+offset_right = 517.368
+offset_bottom = 518.421
+theme = ExtResource("1_4xpt5")
+icon = ExtResource("7_bb68g")
+expand_icon = true
+
+[node name="Label6" type="Label" parent="ScrollContainer/Items/Button6"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 245.0
+offset_right = 2207.0
+offset_bottom = 526.0
+scale = Vector2(0.08, 0.08)
+theme = ExtResource("1_1cnv2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -50
+theme_override_font_sizes/font_size = 189
+text = "Tapete de Ginástica
+$ 40
+dificuldade: Você decide"
+horizontal_alignment = 1
+
+[node name="Button7" type="Button" parent="ScrollContainer/Items"]
+layout_mode = 0
+offset_left = 533.684
+offset_top = 268.421
+offset_right = 783.684
+offset_bottom = 518.421
+theme = ExtResource("1_4xpt5")
+icon = ExtResource("8_sb2gr")
+expand_icon = true
+
+[node name="Label7" type="Label" parent="ScrollContainer/Items/Button7"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 245.0
+offset_right = 2207.0
+offset_bottom = 526.0
+scale = Vector2(0.08, 0.08)
+theme = ExtResource("1_1cnv2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -50
+theme_override_font_sizes/font_size = 189
+text = "Indisponivel"
+horizontal_alignment = 1
+
+[node name="Button8" type="Button" parent="ScrollContainer/Items"]
+layout_mode = 0
+offset_left = 801.053
+offset_top = 268.421
+offset_right = 1051.05
+offset_bottom = 518.421
+theme = ExtResource("1_4xpt5")
+icon = ExtResource("8_sb2gr")
+expand_icon = true
+
+[node name="Label8" type="Label" parent="ScrollContainer/Items/Button8"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 245.0
+offset_right = 2207.0
+offset_bottom = 526.0
+scale = Vector2(0.08, 0.08)
+theme = ExtResource("1_1cnv2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -50
+theme_override_font_sizes/font_size = 189
+text = "Indisponivel"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 838.0
+offset_top = 26.0
+offset_right = 1014.0
+offset_bottom = 83.0
+theme = SubResource("Theme_4qcln")
+
+[node name="Moneycounter" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 11.0
+offset_right = 165.0
+offset_bottom = 51.0
+theme_override_fonts/font = ExtResource("11_ujwq2")
+theme_override_font_sizes/font_size = 35
+text = "$ 0.00"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 26.0
+offset_right = 205.0
+offset_bottom = 83.0
+theme = ExtResource("1_1cnv2")
+theme_override_font_sizes/font_size = 30
+text = "< Voltar"
