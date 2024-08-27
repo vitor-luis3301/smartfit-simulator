@@ -16,11 +16,17 @@ func _process(delta: float) -> void:
 		%selectedItem.text += "No, you can't."
 
 func _on_button_pressed() -> void:
-	$NavigationRegion2D.bake_navigation_polygon()
-	await $NavigationRegion2D.bake_finished
-	$Spawner.spawn(owner.spawnedEntity)
+	%NavigationRegion2D.bake_navigation_polygon()
+	await %NavigationRegion2D.bake_finished
+	%Spawner.spawn(owner.spawnedEntity)
 
 func _on_button_2_pressed() -> void:
 	var store = load("res://Scenes/Store.tscn").instantiate()
 	get_tree().paused = true
 	add_child(store)
+
+
+func _on_button_3_pressed() -> void:
+	var inventory = load("res://Scenes/Inventory.tscn").instantiate()
+	get_tree().paused = true
+	add_child(inventory)

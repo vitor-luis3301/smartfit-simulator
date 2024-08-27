@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://k04djchnk54w"]
+
+[ext_resource type="Theme" uid="uid://rj1bhpdaknti" path="res://Materials/Store.tres" id="1_kcnu6"]
+[ext_resource type="Theme" uid="uid://dwk7r2n81lphi" path="res://Materials/tema_mini.tres" id="2_um6yk"]
+
+[node name="Slot" type="Control"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_right = -856.0
+offset_bottom = -441.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+theme = ExtResource("1_kcnu6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 132.0
+offset_top = 127.0
+offset_right = 302.0
+offset_bottom = 322.0
+scale = Vector2(0.38, 0.38)
+theme = ExtResource("2_um6yk")
+theme_override_font_sizes/font_size = 139
+text = "
+"

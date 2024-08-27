@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dcwvbya11s82t"]
+[gd_scene load_steps=15 format=3 uid="uid://dcwvbya11s82t"]
 
 [ext_resource type="Theme" uid="uid://rj1bhpdaknti" path="res://Materials/Store.tres" id="1_4xpt5"]
 [ext_resource type="Script" path="res://Scenes/store.gd" id="1_deqaq"]
-[ext_resource type="StyleBox" uid="uid://by7hulmnylyvy" path="res://Scenes/money.tres" id="1_ynes0"]
+[ext_resource type="StyleBox" uid="uid://dv7c4s5f7umbr" path="res://Materials/money.tres" id="2_2unyf"]
 [ext_resource type="FontFile" uid="uid://bul547wt42nd7" path="res://Assets/Fonts/tinypixel.otf" id="2_48yno"]
 [ext_resource type="Texture2D" uid="uid://8wbuwwlt8ue3" path="res://Assets/sprites/Equipment/spr_pesoPequeno.png" id="2_owjws"]
 [ext_resource type="Theme" uid="uid://b3pyp5hxx8e7m" path="res://Materials/tema.tres" id="2_syw4e"]
@@ -13,19 +13,32 @@
 [ext_resource type="Texture2D" uid="uid://dqj5v1n00h4o" path="res://Assets/sprites/Equipment/spr_esteira.png" id="7_hyu0h"]
 [ext_resource type="Texture2D" uid="uid://dsygnxyvblbt8" path="res://Assets/sprites/Equipment/spr_tapete.png" id="8_3q8cn"]
 
-[sub_resource type="Theme" id="Theme_sq1c1"]
-Panel/styles/panel = ExtResource("1_ynes0")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_owpkq"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id="Theme_sswfi"]
+Panel/styles/panel = SubResource("StyleBoxFlat_owpkq")
 
 [node name="Node2D" type="Control"]
 process_mode = 2
 layout_mode = 3
 anchors_preset = 0
+offset_left = 26.4
+offset_top = 16.0
+offset_right = 26.4
+offset_bottom = 16.0
+scale = Vector2(0.95, 0.95)
 script = ExtResource("1_deqaq")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="Panel" parent="."]
 layout_mode = 0
 offset_right = 1056.0
 offset_bottom = 640.0
+theme = SubResource("Theme_sswfi")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -33,7 +46,7 @@ offset_left = 836.0
 offset_top = 25.0
 offset_right = 1012.0
 offset_bottom = 82.0
-theme = SubResource("Theme_sq1c1")
+theme_override_styles/panel = ExtResource("2_2unyf")
 
 [node name="Moneycounter" type="Label" parent="Panel"]
 unique_name_in_owner = true

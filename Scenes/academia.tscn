@@ -1,9 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://dsiqfg5wnspu4"]
+[gd_scene load_steps=36 format=3 uid="uid://dsiqfg5wnspu4"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_6omsm"]
 [ext_resource type="TileSet" uid="uid://d4lgjqe5qdgp4" path="res://Materials/academia.tres" id="2_vwq03"]
 [ext_resource type="TileSet" uid="uid://2rv7ruq0wfpg" path="res://Materials/equipments.tres" id="3_f2wtw"]
-[ext_resource type="StyleBox" uid="uid://by7hulmnylyvy" path="res://Scenes/money.tres" id="3_m5qqx"]
 [ext_resource type="Theme" uid="uid://b3pyp5hxx8e7m" path="res://Materials/tema.tres" id="4_mnaoq"]
 [ext_resource type="Script" path="res://Scenes/protecc.gd" id="5_gfbc7"]
 [ext_resource type="Texture2D" uid="uid://dhnk1w6lh2qo2" path="res://Assets/sprites/Ambient/spr_floor.png" id="6_qp7jt"]
@@ -16,12 +15,14 @@
 [ext_resource type="Script" path="res://Scenes/spawner.gd" id="11_6natk"]
 [ext_resource type="Texture2D" uid="uid://4ubgd7muu1q" path="res://Assets/sprites/UI/spr_select96.png" id="11_wddkv"]
 [ext_resource type="Script" path="res://Scenes/UI.gd" id="13_1lcv3"]
+[ext_resource type="Theme" uid="uid://dwk7r2n81lphi" path="res://Materials/tema_mini.tres" id="14_6qqmh"]
 [ext_resource type="Script" path="res://Scenes/cursor.gd" id="14_sfrkn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2ekyh"]
-vertices = PackedVector2Array(1056.98, 0, 1056.02, 640, -0.976563, 640, -0.0078125, -0.992188)
+vertices = PackedVector2Array(1056, 640, 0, 640, 0, 0, 1056, 0)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-11, 650, 1066, 650, 1067, -10, -10, -11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-10, 650, 1066, 650, 1066, -10, -10, -10)])
+parsed_collision_mask = 4294967047
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tifmb"]
 texture = ExtResource("6_qp7jt")
@@ -80,10 +81,22 @@ size = Vector2(128, 224)
 size = Vector2(623, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0jqv"]
-size = Vector2(290, 193.5)
+size = Vector2(288, 192)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocnnw"]
+bg_color = Color(0.422847, 0.673094, 0.408637, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="Theme" id="Theme_qx87j"]
-Panel/styles/panel = ExtResource("3_m5qqx")
+Panel/styles/panel = SubResource("StyleBoxFlat_ocnnw")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kbnbg"]
 radius = 1.0
@@ -92,6 +105,7 @@ radius = 1.0
 script = ExtResource("1_6omsm")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+unique_name_in_owner = true
 navigation_polygon = SubResource("NavigationPolygon_2ekyh")
 
 [node name="floor" type="TileMapLayer" parent="NavigationRegion2D"]
@@ -158,7 +172,7 @@ shape = SubResource("RectangleShape2D_7f4ux")
 disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ProtectedArea"]
-position = Vector2(111, -452.75)
+position = Vector2(110, -452)
 shape = SubResource("RectangleShape2D_v0jqv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -170,7 +184,7 @@ offset_left = 18.0
 offset_top = 17.0
 offset_right = 1037.0
 offset_bottom = 149.0
-theme = ExtResource("4_mnaoq")
+theme = ExtResource("14_6qqmh")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
@@ -206,17 +220,19 @@ theme_override_font_sizes/font_size = 35
 text = "$ 0.00"
 
 [node name="Button2" type="Button" parent="CanvasLayer"]
-offset_left = 832.0
+offset_left = 827.0
 offset_top = 98.0
 offset_right = 899.0
 offset_bottom = 138.0
+theme = ExtResource("14_6qqmh")
 text = "Store"
 
 [node name="Button3" type="Button" parent="CanvasLayer"]
-offset_left = 909.0
+offset_left = 905.0
 offset_top = 98.0
-offset_right = 992.0
+offset_right = 1003.0
 offset_bottom = 138.0
+theme = ExtResource("14_6qqmh")
 text = "Inventory"
 
 [node name="Cursor" type="Area2D" parent="."]
@@ -229,3 +245,4 @@ shape = SubResource("CircleShape2D_kbnbg")
 [connection signal="mouse_exited" from="ProtectedArea" to="ProtectedArea" method="_on_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="CanvasLayer" method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button3" to="CanvasLayer" method="_on_button_3_pressed"]

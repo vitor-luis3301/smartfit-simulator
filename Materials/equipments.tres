@@ -13,6 +13,7 @@ texture_region_size = Vector2i(96, 96)
 texture = ExtResource("2_ba5at")
 texture_region_size = Vector2i(96, 96)
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-48, -27.1724, 48, -27.5, 48, 26.7733, -48, 27.4033)
 
 [resource]
 tile_size = Vector2i(96, 96)
