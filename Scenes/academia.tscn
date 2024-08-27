@@ -22,7 +22,6 @@
 vertices = PackedVector2Array(1056, 640, 0, 640, 0, 0, 1056, 0)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-10, 650, 1066, 650, 1066, -10, -10, -10)])
-parsed_collision_mask = 4294967047
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tifmb"]
 texture = ExtResource("6_qp7jt")
