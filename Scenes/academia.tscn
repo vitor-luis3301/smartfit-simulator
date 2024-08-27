@@ -11,11 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://c4opefrodcmuc" path="res://Assets/sprites/UI/spr_select48.png" id="8_4ser3"]
 [ext_resource type="AudioStream" uid="uid://dmso0i27g54bw" path="res://Assets/Music/Just Add Water.mp3" id="8_p8l7h"]
 [ext_resource type="Texture2D" uid="uid://878vbi5qy53e" path="res://Assets/sprites/Equipment/spr_pesoGiga.png" id="8_qj118"]
-[ext_resource type="Script" path="res://Scenes/UI.gd" id="9_0bp82"]
 [ext_resource type="Texture2D" uid="uid://pvivt0m5g8fq" path="res://Assets/sprites/Ambient/spr_recepcao.png" id="9_rlw2f"]
 [ext_resource type="FontFile" uid="uid://bul547wt42nd7" path="res://Assets/Fonts/tinypixel.otf" id="10_rc7ky"]
 [ext_resource type="Script" path="res://Scenes/spawner.gd" id="11_6natk"]
 [ext_resource type="Texture2D" uid="uid://4ubgd7muu1q" path="res://Assets/sprites/UI/spr_select96.png" id="11_wddkv"]
+[ext_resource type="Script" path="res://Scenes/UI.gd" id="13_1lcv3"]
 [ext_resource type="Script" path="res://Scenes/cursor.gd" id="14_sfrkn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2ekyh"]
@@ -162,7 +162,7 @@ position = Vector2(111, -452.75)
 shape = SubResource("RectangleShape2D_v0jqv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("9_0bp82")
+script = ExtResource("13_1lcv3")
 
 [node name="selectedItem" type="RichTextLabel" parent="CanvasLayer"]
 unique_name_in_owner = true

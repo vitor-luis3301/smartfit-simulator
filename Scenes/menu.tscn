@@ -60,9 +60,8 @@ script = ExtResource("1_emimy")
 
 [node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 643.0
-offset_right = 645.0
+offset_top = 641.0
+offset_right = 641.0
 offset_bottom = 1698.0
 rotation = -1.5708
 texture = SubResource("GradientTexture2D_0fc3p")
