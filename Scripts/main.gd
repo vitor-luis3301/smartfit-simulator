@@ -5,9 +5,9 @@ extends Node2D
 @export var Dic = {}
 @export var canClick : bool = true
 
-var spawnedEntity
+@export var spawnedEntity : Node
 
-var selectedItem = 0
+@export var selectedItem = 0
 
 var items = [
 	"small_weight",
@@ -54,9 +54,11 @@ func _physics_process(delta: float) -> void:
 	
 	# delete marker if mouse is not on tile
 	if Dic.has(str(tile)):
+		%mid_select.clear()
 		%smol_select.set_cell(tile, 0, Vector2i(0,0), 0)
 		if selectedItem == 3:
 			%smol_select.clear()
+			%beeg_select.clear()
 			%mid_select.set_cell(tile, 0, Vector2i(0,0), 0)
 		elif selectedItem >= 4:
 			%smol_select.clear()
@@ -75,10 +77,13 @@ func _physics_process(delta: float) -> void:
 	
 	# Add equipment to the map if left mouse button is clicked
 	var tilesize = 32 # change sample_equipments collisions' sizes to this
-	if selectedItem == 2:
+	$ProtectedArea.changeSizes("default")
+	if selectedItem == 3:
 		tilesize = 48
-	elif selectedItem >= 3:
+		$ProtectedArea.changeSizes("middle")
+	elif selectedItem >= 4:
 		tilesize = 96
+		$ProtectedArea.changeSizes("big")
 	
 	# define the position of the equipment based on the size of the tile
 	var equipPosition = tilesize * tile + Vector2i(tilesize/2, tilesize/2)
@@ -97,11 +102,6 @@ func _physics_process(delta: float) -> void:
 		pass 
 		# Implement it in another way
 	
-	if selectedItem+1 > items.size():
-		%selectedItem.text = "null"
-	else:
-		%selectedItem.text = "Item: " + items[selectedItem]
-	
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
 
@@ -112,8 +112,3 @@ func spawn_equipmens(size, type, mousePos):
 	
 	add_child(newEquip)
 	return newEquip
-
-func _on_button_pressed():
-	$NavigationRegion2D.bake_navigation_polygon()
-	await $NavigationRegion2D.bake_finished
-	$Spawner.spawn(spawnedEntity)

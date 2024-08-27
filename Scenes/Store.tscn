@@ -1,130 +1,224 @@
-[gd_scene load_steps=2 format=3 uid="uid://wvaxw7bftyd0"]
+[gd_scene load_steps=15 format=3 uid="uid://dcwvbya11s82t"]
 
 [ext_resource type="Theme" uid="uid://rj1bhpdaknti" path="res://Materials/Store.tres" id="1_4xpt5"]
+[ext_resource type="Script" path="res://Scenes/Store.gd" id="1_xyr2n"]
+[ext_resource type="StyleBox" uid="uid://by7hulmnylyvy" path="res://Scenes/money.tres" id="1_ynes0"]
+[ext_resource type="FontFile" uid="uid://bul547wt42nd7" path="res://Assets/Fonts/tinypixel.otf" id="2_48yno"]
+[ext_resource type="Texture2D" uid="uid://8wbuwwlt8ue3" path="res://Assets/sprites/Equipment/spr_pesoPequeno.png" id="2_owjws"]
+[ext_resource type="Theme" uid="uid://b3pyp5hxx8e7m" path="res://Materials/tema.tres" id="2_syw4e"]
+[ext_resource type="Texture2D" uid="uid://b7c1iqwomiabj" path="res://Assets/sprites/UI/Store.png" id="3_cxj0a"]
+[ext_resource type="Texture2D" uid="uid://b1w0h872lqisl" path="res://Assets/sprites/Equipment/spr_pesoMedio.png" id="3_pho32"]
+[ext_resource type="Texture2D" uid="uid://b7tvv8mhfqbae" path="res://Assets/sprites/Equipment/spr_pesoGrande.png" id="4_nl47t"]
+[ext_resource type="Texture2D" uid="uid://878vbi5qy53e" path="res://Assets/sprites/Equipment/spr_pesoGiga.png" id="5_3y5tp"]
+[ext_resource type="Texture2D" uid="uid://dqj5v1n00h4o" path="res://Assets/sprites/Equipment/spr_esteira.png" id="7_hyu0h"]
+[ext_resource type="Texture2D" uid="uid://dsygnxyvblbt8" path="res://Assets/sprites/Equipment/spr_tapete.png" id="8_3q8cn"]
+[ext_resource type="Texture2D" uid="uid://c6rbamqd21dsb" path="res://Assets/sprites/UI/spr_itemIndisponivel.png" id="9_mfq22"]
 
-[node name="ScrollContainer" type="ScrollContainer"]
+[sub_resource type="Theme" id="Theme_sq1c1"]
+Panel/styles/panel = ExtResource("1_ynes0")
+
+[node name="Node2D" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xyr2n")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 1056.0
 offset_bottom = 640.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 836.0
+offset_top = 25.0
+offset_right = 1012.0
+offset_bottom = 82.0
+theme = SubResource("Theme_sq1c1")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
+[node name="Moneycounter" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 11.0
+offset_right = 165.0
+offset_bottom = 51.0
+theme_override_fonts/font = ExtResource("2_48yno")
+theme_override_font_sizes/font_size = 35
+text = "$ 0.00"
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 147.0
+offset_right = 1083.0
+offset_bottom = 666.0
+scale = Vector2(0.95, 0.95)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(1057, 519)
 layout_mode = 2
-size_flags_horizontal = 3
+
+[node name="Buttons1" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/Buttons1"]
+custom_minimum_size = Vector2(261, 261)
+layout_mode = 2
 theme = ExtResource("1_4xpt5")
+icon = ExtResource("2_owjws")
+expand_icon = true
 
-[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Button2" type="Button" parent="ScrollContainer/VBoxContainer/Buttons1"]
+custom_minimum_size = Vector2(261, 261)
 layout_mode = 2
-size_flags_horizontal = 3
 theme = ExtResource("1_4xpt5")
+icon = ExtResource("3_pho32")
+expand_icon = true
 
-[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Button3" type="Button" parent="ScrollContainer/VBoxContainer/Buttons1"]
+custom_minimum_size = Vector2(261, 261)
 layout_mode = 2
-size_flags_horizontal = 3
 theme = ExtResource("1_4xpt5")
+icon = ExtResource("4_nl47t")
+expand_icon = true
 
-[node name="Button4" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Button4" type="Button" parent="ScrollContainer/VBoxContainer/Buttons1"]
+custom_minimum_size = Vector2(261, 261)
 layout_mode = 2
-size_flags_horizontal = 3
 theme = ExtResource("1_4xpt5")
+icon = ExtResource("5_3y5tp")
+expand_icon = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Descriptions1" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Descriptions1"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("2_syw4e")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Peso pequeno
 $ 200
 dificuldade: fácil"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/Descriptions1"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Peso pequeno
-$ 200
+theme = ExtResource("2_syw4e")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Peso médio
+$ 400
 dificuldade: fácil"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/Descriptions1"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Peso pequeno
-$ 200
-dificuldade: fácil"
+theme = ExtResource("2_syw4e")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Peso grande
+$ 600
+dificuldade: médio"
 horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="Label4" type="Label" parent="ScrollContainer/VBoxContainer/Descriptions1"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Peso pequeno
-$ 200
-dificuldade: fácil"
+theme = ExtResource("2_syw4e")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Peso Giga
+$ 800
+dificuldade: difícil"
 horizontal_alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Buttons2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer3"]
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/Buttons2"]
+custom_minimum_size = Vector2(261, 261)
 layout_mode = 2
-size_flags_horizontal = 3
 theme = ExtResource("1_4xpt5")
+icon = ExtResource("7_hyu0h")
+expand_icon = true
 
-[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer3"]
+[node name="Button2" type="Button" parent="ScrollContainer/VBoxContainer/Buttons2"]
+custom_minimum_size = Vector2(261, 261)
 layout_mode = 2
-size_flags_horizontal = 3
 theme = ExtResource("1_4xpt5")
+icon = ExtResource("8_3q8cn")
+expand_icon = true
 
-[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer3"]
+[node name="Button3" type="Button" parent="ScrollContainer/VBoxContainer/Buttons2"]
+custom_minimum_size = Vector2(261, 261)
 layout_mode = 2
-size_flags_horizontal = 3
 theme = ExtResource("1_4xpt5")
+icon = ExtResource("9_mfq22")
+expand_icon = true
 
-[node name="Button4" type="Button" parent="VBoxContainer/HBoxContainer3"]
+[node name="Button4" type="Button" parent="ScrollContainer/VBoxContainer/Buttons2"]
+custom_minimum_size = Vector2(261, 261)
 layout_mode = 2
-size_flags_horizontal = 3
 theme = ExtResource("1_4xpt5")
+icon = ExtResource("9_mfq22")
+expand_icon = true
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Descriptions2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer4"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Peso pequeno
-$ 200
-dificuldade: fácil"
-horizontal_alignment = 1
-
-[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer4"]
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Descriptions2"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Peso pequeno
-$ 200
-dificuldade: fácil"
+theme = ExtResource("2_syw4e")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Esteira
+$ 1200
+dificuldade: Você decide!"
 horizontal_alignment = 1
 
-[node name="Label7" type="Label" parent="VBoxContainer/HBoxContainer4"]
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/Descriptions2"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Peso pequeno
-$ 200
-dificuldade: fácil"
+theme = ExtResource("2_syw4e")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Tapete de ginástica
+$ 40
+dificuldade: Você decide"
 horizontal_alignment = 1
 
-[node name="Label8" type="Label" parent="VBoxContainer/HBoxContainer4"]
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/Descriptions2"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Peso pequeno
-$ 200
-dificuldade: fácil"
+size_flags_vertical = 1
+theme = ExtResource("2_syw4e")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Indisponivel"
 horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="ScrollContainer/VBoxContainer/Descriptions2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("2_syw4e")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Indisponivel"
+horizontal_alignment = 1
+
+[node name="Store" type="Sprite2D" parent="."]
+position = Vector2(528, 0)
+scale = Vector2(0.232, 0.23)
+texture = ExtResource("3_cxj0a")
+offset = Vector2(0, 400)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 25.0
+offset_right = 221.0
+offset_bottom = 82.0
+theme = ExtResource("2_syw4e")
+theme_override_font_sizes/font_size = 24
+text = "< Voltar"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

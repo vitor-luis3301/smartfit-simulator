@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://dsiqfg5wnspu4"]
+[gd_scene load_steps=35 format=3 uid="uid://dsiqfg5wnspu4"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_6omsm"]
 [ext_resource type="TileSet" uid="uid://d4lgjqe5qdgp4" path="res://Materials/academia.tres" id="2_vwq03"]
@@ -11,15 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://c4opefrodcmuc" path="res://Assets/sprites/UI/spr_select48.png" id="8_4ser3"]
 [ext_resource type="AudioStream" uid="uid://dmso0i27g54bw" path="res://Assets/Music/Just Add Water.mp3" id="8_p8l7h"]
 [ext_resource type="Texture2D" uid="uid://878vbi5qy53e" path="res://Assets/sprites/Equipment/spr_pesoGiga.png" id="8_qj118"]
+[ext_resource type="Script" path="res://Scenes/UI.gd" id="9_0bp82"]
 [ext_resource type="Texture2D" uid="uid://pvivt0m5g8fq" path="res://Assets/sprites/Ambient/spr_recepcao.png" id="9_rlw2f"]
 [ext_resource type="FontFile" uid="uid://bul547wt42nd7" path="res://Assets/Fonts/tinypixel.otf" id="10_rc7ky"]
 [ext_resource type="Script" path="res://Scenes/spawner.gd" id="11_6natk"]
 [ext_resource type="Texture2D" uid="uid://4ubgd7muu1q" path="res://Assets/sprites/UI/spr_select96.png" id="11_wddkv"]
-[ext_resource type="Texture2D" uid="uid://c1xfdo8jkctxu" path="res://icon.svg" id="11_wyiu0"]
 [ext_resource type="Script" path="res://Scenes/cursor.gd" id="14_sfrkn"]
-
-[sub_resource type="Theme" id="Theme_qx87j"]
-Panel/styles/panel = ExtResource("3_m5qqx")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2ekyh"]
 vertices = PackedVector2Array(1056.98, 0, 1056.02, 640, -0.976563, 640, -0.0078125, -0.992188)
@@ -80,7 +77,13 @@ size = Vector2(256, 96)
 size = Vector2(128, 224)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7f4ux"]
-size = Vector2(480, 64)
+size = Vector2(623, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0jqv"]
+size = Vector2(290, 193.5)
+
+[sub_resource type="Theme" id="Theme_qx87j"]
+Panel/styles/panel = ExtResource("3_m5qqx")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kbnbg"]
 radius = 1.0
@@ -88,7 +91,78 @@ radius = 1.0
 [node name="Main" type="Node2D"]
 script = ExtResource("1_6omsm")
 
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_2ekyh")
+
+[node name="floor" type="TileMapLayer" parent="NavigationRegion2D"]
+unique_name_in_owner = true
+tile_set = SubResource("TileSet_dejs8")
+
+[node name="smol_select" type="TileMapLayer" parent="NavigationRegion2D"]
+unique_name_in_owner = true
+use_parent_material = true
+tile_set = SubResource("TileSet_8jsab")
+
+[node name="smol_equip" type="TileMapLayer" parent="NavigationRegion2D"]
+unique_name_in_owner = true
+use_parent_material = true
+tile_set = ExtResource("2_vwq03")
+
+[node name="mid_select" type="TileMapLayer" parent="NavigationRegion2D"]
+unique_name_in_owner = true
+tile_set = SubResource("TileSet_apn7p")
+
+[node name="mid_equip" type="TileMapLayer" parent="NavigationRegion2D"]
+unique_name_in_owner = true
+tile_set = SubResource("TileSet_ba61e")
+
+[node name="beeg_select" type="TileMapLayer" parent="NavigationRegion2D"]
+unique_name_in_owner = true
+use_parent_material = true
+tile_set = SubResource("TileSet_kmlcf")
+
+[node name="beeg_equip" type="TileMapLayer" parent="NavigationRegion2D"]
+unique_name_in_owner = true
+use_parent_material = true
+tile_set = ExtResource("3_f2wtw")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_p8l7h")
+autoplay = true
+parameters/looping = true
+
+[node name="SprRecepcao" type="Sprite2D" parent="."]
+position = Vector2(64, 528)
+texture = ExtResource("9_rlw2f")
+
+[node name="Spawner" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(62, 668)
+script = ExtResource("11_6natk")
+
+[node name="ProtectedArea" type="Area2D" parent="."]
+position = Vector2(802, 548)
+script = ExtResource("5_gfbc7")
+
+[node name="button_protec" type="CollisionShape2D" parent="ProtectedArea"]
+position = Vector2(126, 44)
+shape = SubResource("RectangleShape2D_10pdm")
+
+[node name="reception_protec" type="CollisionShape2D" parent="ProtectedArea"]
+position = Vector2(-738, -20)
+shape = SubResource("RectangleShape2D_oh4mw")
+
+[node name="bottom_protec" type="CollisionShape2D" parent="ProtectedArea"]
+position = Vector2(-345.5, 60)
+shape = SubResource("RectangleShape2D_7f4ux")
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProtectedArea"]
+position = Vector2(111, -452.75)
+shape = SubResource("RectangleShape2D_v0jqv")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("9_0bp82")
 
 [node name="selectedItem" type="RichTextLabel" parent="CanvasLayer"]
 unique_name_in_owner = true
@@ -114,10 +188,10 @@ theme_override_font_sizes/font_size = 19
 text = "Abrir academia"
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
-offset_left = 838.0
-offset_top = 26.0
-offset_right = 1014.0
-offset_bottom = 83.0
+offset_left = 826.0
+offset_top = 31.0
+offset_right = 1002.0
+offset_bottom = 88.0
 theme = SubResource("Theme_qx87j")
 
 [node name="Moneycounter" type="Label" parent="CanvasLayer/Panel"]
@@ -131,80 +205,19 @@ theme_override_fonts/font = ExtResource("10_rc7ky")
 theme_override_font_sizes/font_size = 35
 text = "$ 0.00"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_p8l7h")
-autoplay = true
-parameters/looping = true
+[node name="Button2" type="Button" parent="CanvasLayer"]
+offset_left = 832.0
+offset_top = 98.0
+offset_right = 899.0
+offset_bottom = 138.0
+text = "Store"
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_2ekyh")
-
-[node name="floor" type="TileMapLayer" parent="NavigationRegion2D"]
-unique_name_in_owner = true
-tile_set = SubResource("TileSet_dejs8")
-
-[node name="smol_select" type="TileMapLayer" parent="NavigationRegion2D"]
-unique_name_in_owner = true
-use_parent_material = true
-tile_set = SubResource("TileSet_8jsab")
-
-[node name="smol_equip" type="TileMapLayer" parent="NavigationRegion2D"]
-unique_name_in_owner = true
-use_parent_material = true
-tile_map_data = PackedByteArray("AAAZABAAAQAAAAAAAAAaABAAAQAAAAAAAAAYABAAAQAAAAAAAAAYABEAAQAAAAAAAAAYABIAAQAAAAAAAAAbABAAAQAAAAAAAAAcABAAAQAAAAAAAAAdABAAAQAAAAAAAAAeABAAAQAAAAAAAAAfABAAAQAAAAAAAAAgABAAAQAAAAAAAAAYABMAAQAAAAAAAAA=")
-tile_set = ExtResource("2_vwq03")
-
-[node name="mid_select" type="TileMapLayer" parent="NavigationRegion2D"]
-unique_name_in_owner = true
-tile_set = SubResource("TileSet_apn7p")
-
-[node name="mid_equip" type="TileMapLayer" parent="NavigationRegion2D"]
-unique_name_in_owner = true
-tile_map_data = PackedByteArray("AAADAAkAAAAAAAAAAAADAAgAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAADAAoAAAAAAAAAAAADAAsAAAAAAAAAAAAQAAoAAAAAAAAAAAARAAoAAAAAAAAAAAASAAoAAAAAAAAAAAATAAoAAAAAAAAAAAAUAAoAAAAAAAAAAAAVAAoAAAAAAAAAAAAPAAwAAAAAAAAAAAAPAAsAAAAAAAAAAAAPAAoAAAAAAAAAAAADAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAAFAAwAAAAAAAAAAAAGAAwAAAAAAAAAAAAHAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAwAAAAAAAAAAAALAAwAAAAAAAAAAAAMAAwAAAAAAAAAAAANAAwAAAAAAAAAAAAOAAwAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_ba61e")
-
-[node name="beeg_select" type="TileMapLayer" parent="NavigationRegion2D"]
-unique_name_in_owner = true
-use_parent_material = true
-tile_set = SubResource("TileSet_kmlcf")
-
-[node name="beeg_equip" type="TileMapLayer" parent="NavigationRegion2D"]
-unique_name_in_owner = true
-use_parent_material = true
-tile_map_data = PackedByteArray("AAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAQAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAA=")
-tile_set = ExtResource("3_f2wtw")
-
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(972, 144)
-scale = Vector2(0.0171875, 0.0171875)
-texture = ExtResource("11_wyiu0")
-
-[node name="SprRecepcao" type="Sprite2D" parent="."]
-position = Vector2(64, 528)
-texture = ExtResource("9_rlw2f")
-
-[node name="Spawner" type="Node2D" parent="."]
-position = Vector2(62, 668)
-script = ExtResource("11_6natk")
-
-[node name="ProtectedArea" type="Area2D" parent="."]
-position = Vector2(802, 548)
-script = ExtResource("5_gfbc7")
-
-[node name="button_protec" type="CollisionShape2D" parent="ProtectedArea"]
-unique_name_in_owner = true
-position = Vector2(126, 44)
-shape = SubResource("RectangleShape2D_10pdm")
-
-[node name="reception_protec" type="CollisionShape2D" parent="ProtectedArea"]
-unique_name_in_owner = true
-position = Vector2(-738, -20)
-shape = SubResource("RectangleShape2D_oh4mw")
-
-[node name="bottom_protec" type="CollisionShape2D" parent="ProtectedArea"]
-unique_name_in_owner = true
-position = Vector2(-370, 60)
-shape = SubResource("RectangleShape2D_7f4ux")
+[node name="Button3" type="Button" parent="CanvasLayer"]
+offset_left = 909.0
+offset_top = 98.0
+offset_right = 992.0
+offset_bottom = 138.0
+text = "Inventory"
 
 [node name="Cursor" type="Area2D" parent="."]
 script = ExtResource("14_sfrkn")
@@ -212,6 +225,7 @@ script = ExtResource("14_sfrkn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor"]
 shape = SubResource("CircleShape2D_kbnbg")
 
-[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
 [connection signal="mouse_entered" from="ProtectedArea" to="ProtectedArea" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="ProtectedArea" to="ProtectedArea" method="_on_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button2" to="CanvasLayer" method="_on_button_2_pressed"]

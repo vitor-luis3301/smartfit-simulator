@@ -1,7 +1,7 @@
 extends Node
 
 #------------GAME VARIABLES---------------------
-var money : int = 0
+var money : int = 10000
 var small_weights : Dictionary = {}  # smol_equip
 var med_weights : Dictionary = {}    # smol_equip
 var big_weights : Dictionary = {}    # mid_equip
@@ -9,8 +9,6 @@ var giga_weights : Dictionary = {}   # mid_equip
 var threadmills : Dictionary = {}    # beeg_equip
 var mats : Dictionary = {}           # beeg_equip
 #-----------------------------------------------
-
-
 
 # -----------------SETTINGS---------------------
 var fullscreen : bool = false
