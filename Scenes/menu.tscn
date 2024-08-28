@@ -10,6 +10,7 @@ colors = PackedColorArray(0.230315, 0.230315, 0.230315, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_0fc3p"]
 gradient = SubResource("Gradient_5vd8o")
+width = 185
 
 [sub_resource type="Animation" id="Animation_b3xxv"]
 length = 0.001
