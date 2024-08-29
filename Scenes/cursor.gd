@@ -17,8 +17,6 @@ func _process(delta):
 	
 	area = instance_place()
 	
-	print(area)
-	
 	if instance_place():
 		owner.canClick = false
 	else:

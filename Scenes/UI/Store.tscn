@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://dcwvbya11s82t"]
 
 [ext_resource type="Theme" uid="uid://rj1bhpdaknti" path="res://Materials/Store.tres" id="1_4xpt5"]
-[ext_resource type="Script" path="res://Scenes/store.gd" id="1_deqaq"]
+[ext_resource type="Script" path="res://Scenes/UI/store.gd" id="1_deqaq"]
 [ext_resource type="StyleBox" uid="uid://dv7c4s5f7umbr" path="res://Materials/money.tres" id="2_2unyf"]
 [ext_resource type="FontFile" uid="uid://bul547wt42nd7" path="res://Assets/Fonts/tinypixel.otf" id="2_48yno"]
 [ext_resource type="Texture2D" uid="uid://8wbuwwlt8ue3" path="res://Assets/sprites/Equipment/spr_pesoPequeno.png" id="2_owjws"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b1w0h872lqisl" path="res://Assets/sprites/Equipment/spr_pesoMedio.png" id="3_pho32"]
 [ext_resource type="Texture2D" uid="uid://b7tvv8mhfqbae" path="res://Assets/sprites/Equipment/spr_pesoGrande.png" id="4_nl47t"]
 [ext_resource type="Texture2D" uid="uid://878vbi5qy53e" path="res://Assets/sprites/Equipment/spr_pesoGiga.png" id="5_3y5tp"]
-[ext_resource type="Script" path="res://Scenes/storeButton.gd" id="6_yk2xa"]
+[ext_resource type="Script" path="res://Scenes/UI/storeButton.gd" id="6_yk2xa"]
 [ext_resource type="Texture2D" uid="uid://dqj5v1n00h4o" path="res://Assets/sprites/Equipment/spr_esteira.png" id="7_hyu0h"]
 [ext_resource type="Texture2D" uid="uid://dsygnxyvblbt8" path="res://Assets/sprites/Equipment/spr_tapete.png" id="8_3q8cn"]
 
@@ -25,7 +25,7 @@ corner_radius_bottom_left = 20
 Panel/styles/panel = SubResource("StyleBoxFlat_owpkq")
 
 [node name="Node2D" type="Control"]
-process_mode = 3
+process_mode = 2
 layout_mode = 3
 anchors_preset = 0
 offset_left = 26.4
@@ -169,7 +169,7 @@ theme = ExtResource("1_4xpt5")
 icon = ExtResource("7_hyu0h")
 expand_icon = true
 script = ExtResource("6_yk2xa")
-equipment = "threadmill"
+equipment = "esteira"
 price = 1200
 
 [node name="Button6" type="Button" parent="ScrollContainer/GridContainer"]
@@ -180,7 +180,7 @@ theme = ExtResource("1_4xpt5")
 icon = ExtResource("8_3q8cn")
 expand_icon = true
 script = ExtResource("6_yk2xa")
-equipment = "mat"
+equipment = "tapete"
 price = 40
 
 [node name="Button7" type="Button" parent="ScrollContainer/GridContainer"]

@@ -2,9 +2,9 @@ extends Node
 
 #------------GAME VARIABLES---------------------
 var money : int = 10000
-var inventory = {
-	
-}
+var inventory = {}
+var selectedItem
+var environment = {}
 #-----------------------------------------------
 
 # -----------------SETTINGS---------------------

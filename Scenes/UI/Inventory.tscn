@@ -1,0 +1,97 @@
+[gd_scene load_steps=5 format=3 uid="uid://c563h0g5e4r2m"]
+
+[ext_resource type="PackedScene" uid="uid://k04djchnk54w" path="res://Objects/slot.tscn" id="1_u77nb"]
+[ext_resource type="Script" path="res://Scenes/inventory.gd" id="1_yb7nd"]
+[ext_resource type="Theme" uid="uid://dwk7r2n81lphi" path="res://Materials/tema_mini.tres" id="3_0ey07"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38d2o"]
+bg_color = Color(0.43134, 0.43134, 0.43134, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Inventory" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.4
+offset_top = 16.0
+offset_right = 26.4
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.95, 0.95)
+script = ExtResource("1_yb7nd")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1056.0
+offset_bottom = 640.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_38d2o")
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 17.4737
+offset_top = 201.053
+offset_right = 1033.47
+offset_bottom = 605.053
+columns = 5
+
+[node name="Slot" parent="Panel/GridContainer" instance=ExtResource("1_u77nb")]
+layout_mode = 2
+
+[node name="Slot2" parent="Panel/GridContainer" instance=ExtResource("1_u77nb")]
+layout_mode = 2
+
+[node name="Slot3" parent="Panel/GridContainer" instance=ExtResource("1_u77nb")]
+layout_mode = 2
+
+[node name="Slot4" parent="Panel/GridContainer" instance=ExtResource("1_u77nb")]
+layout_mode = 2
+
+[node name="Slot5" parent="Panel/GridContainer" instance=ExtResource("1_u77nb")]
+layout_mode = 2
+
+[node name="Slot6" parent="Panel/GridContainer" instance=ExtResource("1_u77nb")]
+layout_mode = 2
+
+[node name="Slot7" parent="Panel/GridContainer" instance=ExtResource("1_u77nb")]
+layout_mode = 2
+
+[node name="Slot8" parent="Panel/GridContainer" instance=ExtResource("1_u77nb")]
+layout_mode = 2
+
+[node name="Slot9" parent="Panel/GridContainer" instance=ExtResource("1_u77nb")]
+layout_mode = 2
+
+[node name="Slot10" parent="Panel/GridContainer" instance=ExtResource("1_u77nb")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 17.4737
+offset_top = 32.6316
+offset_right = 193.474
+offset_bottom = 88.6316
+theme = ExtResource("3_0ey07")
+theme_override_font_sizes/font_size = 26
+text = "< Voltar"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 314.316
+offset_top = 17.8947
+offset_right = 712.316
+offset_bottom = 138.895
+theme = ExtResource("3_0ey07")
+theme_override_font_sizes/font_size = 86
+text = "Inventory"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

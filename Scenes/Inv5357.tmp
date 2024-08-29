@@ -43,7 +43,6 @@ offset_top = 201.053
 offset_right = 1033.47
 offset_bottom = 605.053
 columns = 5
-metadata/_edit_group_ = true
 
 [node name="Slot" parent="Panel/GridContainer" instance=ExtResource("1_u77nb")]
 layout_mode = 2

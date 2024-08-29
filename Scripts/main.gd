@@ -9,15 +9,6 @@ extends Node2D
 
 @export var selectedItem = 0
 
-var items = [
-	"small_weight",
-	"med_weight",
-	"big_weight",
-	"Giga_weight",
-	"threadmill",
-	"mat"
-]
-
 @onready var equipment = preload("res://Objects/Sample_equipment.tscn")
 
 
@@ -38,11 +29,11 @@ func _physics_process(delta: float) -> void:
 	
 	var tile = %smol_select.local_to_map(mouse)
 	%beeg_select.clear()
-	if selectedItem == 3:
+	if Global.selectedItem == "peso_giga":
 		currentselect = %mid_select
 		tile = %mid_select.local_to_map(mouse)
 		%smol_select.clear()
-	elif selectedItem >= 4:
+	elif Global.selectedItem == "esteira" || Global.selectedItem == "tapete":
 		currentselect = %beeg_select
 		tile = %beeg_select.local_to_map(mouse)
 		%mid_select.clear()
@@ -56,46 +47,45 @@ func _physics_process(delta: float) -> void:
 	if Dic.has(str(tile)):
 		%mid_select.clear()
 		%smol_select.set_cell(tile, 0, Vector2i(0,0), 0)
-		if selectedItem == 3:
+		if Global.selectedItem == "peso_giga":
 			%smol_select.clear()
 			%beeg_select.clear()
 			%mid_select.set_cell(tile, 0, Vector2i(0,0), 0)
-		elif selectedItem >= 4:
+		elif Global.selectedItem == "esteira" || Global.selectedItem == "tapete":
 			%smol_select.clear()
 			%mid_select.clear()
 			%beeg_select.set_cell(tile, 0, Vector2i(0,0), 0)
 	
-	# Select items on mouse wheel up or down or arrow up or down is clicked
-	if Input.is_action_just_pressed("select_down"):
-		selectedItem += 1
-	if Input.is_action_just_pressed("select_up"):
-		selectedItem -= 1
-	if selectedItem < 0:
-		selectedItem = 0
-	if selectedItem > items.size():
-		selectedItem = items.size()
-	
-	# Add equipment to the map if left mouse button is clicked
-	var tilesize = 32 # change sample_equipments collisions' sizes to this
+	var tilesize = 32
 	$ProtectedArea.changeSizes("default")
-	if selectedItem == 3:
+	if Global.selectedItem == "peso_giga":
 		tilesize = 48
 		$ProtectedArea.changeSizes("middle")
-	elif selectedItem >= 4:
+	elif Global.selectedItem == "esteira" || Global.selectedItem == "tapete":
 		tilesize = 96
 		$ProtectedArea.changeSizes("big")
 	
 	# define the position of the equipment based on the size of the tile
 	var equipPosition = tilesize * tile + Vector2i(tilesize/2, tilesize/2)
 	
+	var equips = []
 	# Add equipment to the map when left mouse button is clicked
 	if Input.is_action_just_pressed("left_button") and canClick == true:
-		%smol_equip.set_cell(tile, selectedItem, Vector2i(0,0), 0)
-		if selectedItem == 3:
-			%mid_equip.set_cell(tile, 0, Vector2i(0,0), 0)
-		elif selectedItem >= 4:
-			%beeg_equip.set_cell(tile, selectedItem-4, Vector2i(0,0), 0)
-		spawnedEntity = spawn_equipmens(tilesize, items[selectedItem], equipPosition)
+		if Global.selectedItem:
+			if Global.selectedItem == "peso_giga":
+				%mid_equip.set_cell(tile, 0, Vector2i(0,0), 0)
+			elif Global.selectedItem == "esteira":
+				%beeg_equip.set_cell(tile, 0, Vector2i(0,0), 0)
+			elif Global.selectedItem == "tapete":
+				%beeg_equip.set_cell(tile, 1, Vector2i(0,0), 0)
+			elif Global.selectedItem == "peso_peq":
+				%smol_equip.set_cell(tile, 0, Vector2i(0,0), 0)
+			elif Global.selectedItem == "peso_med":
+				%smol_equip.set_cell(tile, 1, Vector2i(0,0), 0)
+			elif Global.selectedItem == "peso_gran":
+				%smol_equip.set_cell(tile, 2, Vector2i(0,0), 0)
+			
+			spawn_equipmens(tilesize, equipPosition)
 	
 	# Remove equipment to the map if right mouse button is clicked
 	if Input.is_action_pressed("right_button"):
@@ -105,7 +95,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
 
-func spawn_equipmens(size, type, mousePos):
+func spawn_equipmens(size, mousePos):
 	var newEquip = equipment.instantiate()
 	newEquip.position = mousePos
 	newEquip.get_node("collision").shape.size = Vector2(size, size)

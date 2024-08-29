@@ -4,10 +4,10 @@ extends CanvasLayer
 func _process(delta: float) -> void:
 	%Moneycounter.text = "$ " + str(Global.money)
 	
-	if owner.selectedItem+1 > owner.items.size():
+	if Global.selectedItem == "" || Global.selectedItem == null:
 		%selectedItem.text = "null"
 	else:
-		%selectedItem.text = "Item: " + owner.items[owner.selectedItem]
+		%selectedItem.text = "Item: " + Global.selectedItem
 
 	%selectedItem.text += "\nCan you click? "
 	if owner.canClick:
@@ -21,10 +21,10 @@ func _on_button_pressed() -> void:
 	%Spawner.spawn(owner.spawnedEntity)
 
 func _on_button_2_pressed() -> void:
-	var store = load("res://Scenes/Store.tscn").instantiate()
 	get_tree().paused = true
+	await get_tree().create_timer(0.2).timeout
+	var store = load("res://Scenes/Store.tscn").instantiate()
 	add_child(store)
-
 
 func _on_button_3_pressed() -> void:
 	var inventory = load("res://Scenes/Inventory.tscn").instantiate()

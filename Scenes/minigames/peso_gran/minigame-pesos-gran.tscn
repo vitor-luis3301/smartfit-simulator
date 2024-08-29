@@ -1,0 +1,319 @@
+[gd_scene load_steps=26 format=3 uid="uid://cv0ffbc8r3i4r"]
+
+[ext_resource type="Script" path="res://Scenes/minigames/minigame.gd" id="1_mqqeg"]
+[ext_resource type="Texture2D" uid="uid://p23jrl2f174v" path="res://Assets/sprites/Characters/spr_treinador.png" id="2_obfje"]
+[ext_resource type="Texture2D" uid="uid://cxt55p8uxi13b" path="res://Assets/sprites/Characters/spr_mlkDoPesoGrande.png" id="3_yfml0"]
+[ext_resource type="Texture2D" uid="uid://d32buy1s3xtkr" path="res://Assets/sprites/UI/undertale-bar.png" id="4_owybr"]
+[ext_resource type="Script" path="res://Scenes/minigames/peso_gran/marker_peso-gran.gd" id="5_tua41"]
+
+[sub_resource type="Animation" id="Animation_hk52q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_irnt7"]
+resource_name = "idle"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.733333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_ealxw"]
+resource_name = "whistle"
+length = 2.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.466666, 0.533333, 0.6, 0.666663, 0.733333, 0.800003, 0.866663, 0.933333, 1, 1.06666, 1.13333, 1.2, 1.26666, 1.33333, 1.4, 1.46666, 1.53333, 1.6, 1.66666, 1.73333, 1.8, 1.86666, 1.93333, 2, 2.06666, 2.13333, 2.2, 2.36667, 2.53333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w25yg"]
+_data = {
+"RESET": SubResource("Animation_hk52q"),
+"idle": SubResource("Animation_irnt7"),
+"whistle": SubResource("Animation_ealxw")
+}
+
+[sub_resource type="Animation" id="Animation_em1v3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_80av5"]
+resource_name = "pesos"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_v63a4"]
+resource_name = "dificuldade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_evx5s"]
+_data = {
+"RESET": SubResource("Animation_em1v3"),
+"dificuldade": SubResource("Animation_v63a4"),
+"pesos": SubResource("Animation_80av5")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyxme"]
+bg_color = Color(0.342611, 0.854479, 0.530537, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mxd7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.154876, 0.154876, 0.154876, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mdkda"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ua77w"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing_size = 0.373
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_knh6t"]
+size = Vector2(3, 52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkjxw"]
+size = Vector2(96, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvfc8"]
+size = Vector2(96, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_irn5f"]
+size = Vector2(145, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_445ns"]
+size = Vector2(146, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63lnk"]
+size = Vector2(24.5, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wy5i6"]
+size = Vector2(25, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n53ne"]
+size = Vector2(6.5, 40)
+
+[node name="Minigame" type="Node2D"]
+script = ExtResource("1_mqqeg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1056.0
+offset_bottom = 640.0
+color = Color(0, 0.823529, 1, 1)
+
+[node name="SprTreinador" type="Sprite2D" parent="."]
+position = Vector2(301, 312)
+scale = Vector2(9, 9)
+texture = ExtResource("2_obfje")
+hframes = 5
+
+[node name="treinador" type="AnimationPlayer" parent="SprTreinador"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_w25yg")
+}
+
+[node name="mlkDosPesos" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(727, 296)
+scale = Vector2(9, 9)
+texture = ExtResource("3_yfml0")
+hframes = 5
+
+[node name="levantaPeso" type="AnimationPlayer" parent="mlkDosPesos"]
+unique_name_in_owner = true
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_evx5s")
+}
+
+[node name="Undertale-bar" type="Sprite2D" parent="."]
+position = Vector2(517.5, 566)
+scale = Vector2(1.25917, 1.25)
+texture = ExtResource("4_owybr")
+
+[node name="Fillment" type="Panel" parent="."]
+unique_name_in_owner = true
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 295.0
+offset_top = 53.0
+offset_right = 513.0
+offset_bottom = 75.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dyxme")
+metadata/_edit_use_anchors_ = true
+
+[node name="Outline" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 243.0
+offset_top = 541.0
+offset_right = 792.0
+offset_bottom = 591.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(274, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_7mxd7")
+metadata/_edit_use_anchors_ = true
+
+[node name="Outline2" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 292.0
+offset_top = 50.0
+offset_right = 734.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mdkda")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(251, 566)
+scale = Vector2(1.355, 1.355)
+script = ExtResource("5_tua41")
+
+[node name="Marker" type="Panel" parent="Area2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -26.0
+offset_right = 4.5
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua77w")
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_knh6t")
+
+[node name="Yellow" type="Area2D" parent="."]
+position = Vector2(515, 566)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Yellow"]
+position = Vector2(-219, 0)
+shape = SubResource("RectangleShape2D_fkjxw")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Yellow"]
+position = Vector2(224, 0)
+shape = SubResource("RectangleShape2D_tvfc8")
+
+[node name="Green" type="Area2D" parent="."]
+position = Vector2(515, 566)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Green"]
+position = Vector2(-98.5, 0)
+shape = SubResource("RectangleShape2D_irn5f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Green"]
+position = Vector2(103, 0)
+shape = SubResource("RectangleShape2D_445ns")
+
+[node name="Red" type="Area2D" parent="."]
+position = Vector2(515, 566)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Red"]
+position = Vector2(-13.75, 0)
+shape = SubResource("RectangleShape2D_63lnk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Red"]
+position = Vector2(17.5, 0)
+shape = SubResource("RectangleShape2D_wy5i6")
+
+[node name="Perfect" type="Area2D" parent="."]
+position = Vector2(515, 566)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Perfect"]
+position = Vector2(1.75, 0)
+shape = SubResource("RectangleShape2D_n53ne")
+
+[node name="WIN" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 361.0
+offset_top = 104.0
+offset_right = 663.0
+offset_bottom = 188.0
+theme_override_font_sizes/font_size = 61
+horizontal_alignment = 1
