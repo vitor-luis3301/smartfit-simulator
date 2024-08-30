@@ -11,5 +11,8 @@ func _process(delta):
 		await get_tree().create_timer(0.3).timeout
 		get_tree().change_scene_to_file("res://Scenes/academia.tscn")
 	
+	if $Button3.button_pressed:
+		get_tree().change_scene_to_file("res://Scenes/UI/créditos.tscn")
+	
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://dso3lltihuiqn"]
+[gd_scene load_steps=26 format=3 uid="uid://cjvrrgacupft5"]
 
-[ext_resource type="Texture2D" uid="uid://p23jrl2f174v" path="res://Assets/sprites/Characters/spr_treinador.png" id="1_sl64m"]
-[ext_resource type="Texture2D" uid="uid://ckeh7wq2d0mxj" path="res://Assets/sprites/Characters/spr_mlkDoPesoGiga.png" id="2_sjmid"]
-[ext_resource type="Texture2D" uid="uid://d32buy1s3xtkr" path="res://Assets/sprites/UI/undertale-bar.png" id="3_cb2ho"]
-[ext_resource type="Script" path="res://Scenes/minigames/peso_giga/marker_peso-giga.gd" id="4_uck1c"]
+[ext_resource type="Script" path="res://Scenes/minigames/minigame.gd" id="1_h4wxb"]
+[ext_resource type="Texture2D" uid="uid://p23jrl2f174v" path="res://Assets/sprites/Characters/spr_treinador.png" id="2_e5rlf"]
+[ext_resource type="Texture2D" uid="uid://biucw6atm0qit" path="res://Assets/sprites/Characters/spr_mlkAbdominal.png" id="3_eooqh"]
+[ext_resource type="Texture2D" uid="uid://d32buy1s3xtkr" path="res://Assets/sprites/UI/undertale-bar.png" id="4_m8g77"]
+[ext_resource type="Script" path="res://Scenes/minigames/ginastica/marker_tapete.gd" id="5_j8ih5"]
 
 [sub_resource type="Animation" id="Animation_hk52q"]
 length = 0.001
@@ -60,7 +61,7 @@ _data = {
 "whistle": SubResource("Animation_ealxw")
 }
 
-[sub_resource type="Animation" id="Animation_em1v3"]
+[sub_resource type="Animation" id="Animation_b3xxv"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -74,9 +75,22 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(706.75, 284.46)]
+}
 
-[sub_resource type="Animation" id="Animation_v63a4"]
-resource_name = "dificuldade"
+[sub_resource type="Animation" id="Animation_6vait"]
+resource_name = "lose"
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -84,14 +98,28 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 2, 5),
+"transitions": PackedFloat32Array(2.73208, 0.329878, 0.170755),
+"update": 0,
+"values": [Vector2(706.75, 284.46), Vector2(399, 216), Vector2(-146, 343)]
 }
 
-[sub_resource type="Animation" id="Animation_80av5"]
+[sub_resource type="Animation" id="Animation_xksw0"]
 resource_name = "pesos"
+length = 2.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -99,23 +127,23 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.533333, 1.03333, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 2, 3]
+"values": [0, 1, 0, 1]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_evx5s"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vwbml"]
 _data = {
-"RESET": SubResource("Animation_em1v3"),
-"dificuldade": SubResource("Animation_v63a4"),
-"pesos": SubResource("Animation_80av5")
+"RESET": SubResource("Animation_b3xxv"),
+"lose": SubResource("Animation_6vait"),
+"pesos": SubResource("Animation_xksw0")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x5mfk"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjp62"]
 bg_color = Color(0.342611, 0.854479, 0.530537, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i00ak"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwgl2"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 5
 border_width_top = 5
@@ -123,7 +151,7 @@ border_width_right = 5
 border_width_bottom = 5
 border_color = Color(0.154876, 0.154876, 0.154876, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwukd"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2yfsc"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 3
 border_width_top = 3
@@ -131,7 +159,7 @@ border_width_right = 3
 border_width_bottom = 3
 border_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_73hpg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvb0b"]
 bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
@@ -139,31 +167,32 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 anti_aliasing_size = 0.373
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dp1xj"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehv50"]
 size = Vector2(3, 52)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_088wh"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6wjo"]
 size = Vector2(96, 40)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ym5y3"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h25rk"]
 size = Vector2(96, 40)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6yn8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qyrxg"]
 size = Vector2(145, 40)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nruyk"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ugc24"]
 size = Vector2(146, 40)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_suk20"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2sc60"]
 size = Vector2(24.5, 40)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6uoqu"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lpq5"]
 size = Vector2(25, 40)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpvbq"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xjfvr"]
 size = Vector2(6.5, 40)
 
 [node name="Minigame" type="Node2D"]
+script = ExtResource("1_h4wxb")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1056.0
@@ -173,7 +202,7 @@ color = Color(0, 0.823529, 1, 1)
 [node name="SprTreinador" type="Sprite2D" parent="."]
 position = Vector2(301, 312)
 scale = Vector2(9, 9)
-texture = ExtResource("1_sl64m")
+texture = ExtResource("2_e5rlf")
 hframes = 5
 
 [node name="treinador" type="AnimationPlayer" parent="SprTreinador"]
@@ -184,22 +213,22 @@ libraries = {
 
 [node name="mlkDosPesos" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(727, 296)
+position = Vector2(706.75, 284.46)
 scale = Vector2(9, 9)
-texture = ExtResource("2_sjmid")
-hframes = 5
+texture = ExtResource("3_eooqh")
+hframes = 3
 
 [node name="levantaPeso" type="AnimationPlayer" parent="mlkDosPesos"]
 unique_name_in_owner = true
-reset_on_save = false
 libraries = {
-"": SubResource("AnimationLibrary_evx5s")
+"": SubResource("AnimationLibrary_vwbml")
 }
+speed_scale = 1.3
 
 [node name="Undertale-bar" type="Sprite2D" parent="."]
 position = Vector2(517.5, 566)
 scale = Vector2(1.25917, 1.25)
-texture = ExtResource("3_cb2ho")
+texture = ExtResource("4_m8g77")
 
 [node name="Fillment" type="Panel" parent="."]
 unique_name_in_owner = true
@@ -211,7 +240,7 @@ offset_top = 53.0
 offset_right = 513.0
 offset_bottom = 75.0
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_x5mfk")
+theme_override_styles/panel = SubResource("StyleBoxFlat_pjp62")
 metadata/_edit_use_anchors_ = true
 
 [node name="Outline" type="Panel" parent="."]
@@ -227,7 +256,7 @@ offset_bottom = 591.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(274, 0)
-theme_override_styles/panel = SubResource("StyleBoxFlat_i00ak")
+theme_override_styles/panel = SubResource("StyleBoxFlat_lwgl2")
 metadata/_edit_use_anchors_ = true
 
 [node name="Outline2" type="Panel" parent="."]
@@ -242,12 +271,12 @@ offset_right = 734.0
 offset_bottom = 77.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_xwukd")
+theme_override_styles/panel = SubResource("StyleBoxFlat_2yfsc")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(251, 566)
 scale = Vector2(1.355, 1.355)
-script = ExtResource("4_uck1c")
+script = ExtResource("5_j8ih5")
 
 [node name="Marker" type="Panel" parent="Area2D"]
 anchors_preset = 8
@@ -261,51 +290,51 @@ offset_right = 4.5
 offset_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_73hpg")
+theme_override_styles/panel = SubResource("StyleBoxFlat_xvb0b")
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_dp1xj")
+shape = SubResource("RectangleShape2D_ehv50")
 
 [node name="Yellow" type="Area2D" parent="."]
 position = Vector2(515, 566)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Yellow"]
 position = Vector2(-219, 0)
-shape = SubResource("RectangleShape2D_088wh")
+shape = SubResource("RectangleShape2D_g6wjo")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Yellow"]
 position = Vector2(224, 0)
-shape = SubResource("RectangleShape2D_ym5y3")
+shape = SubResource("RectangleShape2D_h25rk")
 
 [node name="Green" type="Area2D" parent="."]
 position = Vector2(515, 566)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Green"]
 position = Vector2(-98.5, 0)
-shape = SubResource("RectangleShape2D_h6yn8")
+shape = SubResource("RectangleShape2D_qyrxg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Green"]
 position = Vector2(103, 0)
-shape = SubResource("RectangleShape2D_nruyk")
+shape = SubResource("RectangleShape2D_ugc24")
 
 [node name="Red" type="Area2D" parent="."]
 position = Vector2(515, 566)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Red"]
 position = Vector2(-13.75, 0)
-shape = SubResource("RectangleShape2D_suk20")
+shape = SubResource("RectangleShape2D_2sc60")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Red"]
 position = Vector2(17.5, 0)
-shape = SubResource("RectangleShape2D_6uoqu")
+shape = SubResource("RectangleShape2D_6lpq5")
 
 [node name="Perfect" type="Area2D" parent="."]
 position = Vector2(515, 566)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Perfect"]
 position = Vector2(1.75, 0)
-shape = SubResource("RectangleShape2D_hpvbq")
+shape = SubResource("RectangleShape2D_xjfvr")
 
 [node name="WIN" type="Label" parent="."]
 unique_name_in_owner = true

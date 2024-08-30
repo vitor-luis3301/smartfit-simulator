@@ -1,0 +1,131 @@
+[gd_scene load_steps=10 format=3 uid="uid://lckjdqfbe2ut"]
+
+[ext_resource type="Theme" uid="uid://b3pyp5hxx8e7m" path="res://Materials/tema.tres" id="1_jndvk"]
+[ext_resource type="Texture2D" uid="uid://p23jrl2f174v" path="res://Assets/sprites/Characters/spr_treinador.png" id="2_3k1dl"]
+[ext_resource type="Texture2D" uid="uid://ckeh7wq2d0mxj" path="res://Assets/sprites/Characters/spr_mlkDoPesoGiga.png" id="3_c3mb0"]
+[ext_resource type="Texture2D" uid="uid://csmmjmk4p4qj8" path="res://Assets/sprites/Characters/spr_movingduck.png" id="4_u21wa"]
+[ext_resource type="Texture2D" uid="uid://cb578voy56xq5" path="res://Assets/sprites/UI/trembotec_logo.png" id="5_05d5k"]
+[ext_resource type="Texture2D" uid="uid://c7obw780kblv1" path="res://Assets/sprites/Poggers productions.png" id="6_1n5vo"]
+[ext_resource type="Script" path="res://Scenes/UI/sairDosCreditos.gd" id="7_5svt6"]
+
+[sub_resource type="Gradient" id="Gradient_5vd8o"]
+colors = PackedColorArray(0.446777, 0.446777, 0.446777, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_626ob"]
+gradient = SubResource("Gradient_5vd8o")
+width = 185
+
+[node name="Créditos" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="TextureRect" parent="."]
+offset_top = 641.0
+offset_right = 641.0
+offset_bottom = 1698.0
+rotation = -1.5708
+texture = SubResource("GradientTexture2D_626ob")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 340.0
+offset_top = 20.0
+offset_right = 867.0
+offset_bottom = 161.0
+scale = Vector2(0.71, 0.71)
+theme = ExtResource("1_jndvk")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "CR  DITOS"
+
+[node name="Label2" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = 123.0
+offset_right = 185.0
+offset_bottom = 141.0
+theme = ExtResource("1_jndvk")
+theme_override_colors/font_color = Color(0.996078, 0.282353, 0.282353, 1)
+theme_override_font_sizes/font_size = 100
+text = "É"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 296.0
+offset_right = 2784.0
+offset_bottom = 1121.0
+scale = Vector2(0.175, 0.175)
+theme = ExtResource("1_jndvk")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 146
+text = "Arte: Diego lúcio e Guilherme Simão
+Programação: Vitor Luís
+Prototipagem:  Gustavo Triaquim
+Efeitos sonoros: Diego Lúcio"
+horizontal_alignment = 1
+
+[node name="SprTreinador" type="Sprite2D" parent="."]
+position = Vector2(438, 197)
+scale = Vector2(4.36274, 4.36274)
+texture = ExtResource("2_3k1dl")
+hframes = 5
+frame = 4
+
+[node name="SprMlkDoPesoGiga" type="Sprite2D" parent="."]
+position = Vector2(609, 194)
+scale = Vector2(3.54762, 3.54762)
+texture = ExtResource("3_c3mb0")
+hframes = 5
+frame = 4
+
+[node name="SprMovingduck" type="Sprite2D" parent="."]
+position = Vector2(183, 249)
+rotation = -0.18326
+scale = Vector2(0.0940625, 0.0940625)
+texture = ExtResource("4_u21wa")
+hframes = 4
+
+[node name="SprMovingduck2" type="Sprite2D" parent="."]
+position = Vector2(183, 249)
+rotation = -0.18326
+scale = Vector2(0.0940625, 0.0940625)
+texture = ExtResource("4_u21wa")
+hframes = 4
+
+[node name="SprMovingduck3" type="Sprite2D" parent="."]
+position = Vector2(925, 432)
+rotation = 0.811578
+scale = Vector2(0.0940625, 0.0940625)
+texture = ExtResource("4_u21wa")
+hframes = 4
+
+[node name="SprMovingduck4" type="Sprite2D" parent="."]
+position = Vector2(903, 180)
+rotation = 0.401426
+scale = Vector2(0.0940625, 0.0940625)
+texture = ExtResource("4_u21wa")
+flip_h = true
+hframes = 4
+
+[node name="TrembotecLogo" type="Sprite2D" parent="."]
+position = Vector2(659, 540)
+texture = ExtResource("5_05d5k")
+
+[node name="PoggersProductions" type="Sprite2D" parent="."]
+position = Vector2(387, 539)
+scale = Vector2(0.396, 0.396)
+texture = ExtResource("6_1n5vo")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 27.0
+offset_right = 257.0
+offset_bottom = 102.0
+theme = ExtResource("1_jndvk")
+theme_override_font_sizes/font_size = 36
+text = "Voltar"
+script = ExtResource("7_5svt6")

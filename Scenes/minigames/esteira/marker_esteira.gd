@@ -1,7 +1,7 @@
 extends Area2D
 
 var initPos = 251
-var speed = 7.5
+var speed = 8.5
 var playing : bool
 var started : bool = false
 
@@ -13,6 +13,12 @@ func instance_place():
 	if areas.size() > 0:
 		return areas[0]
 	return null
+
+var times = 1
+func play_lose():
+	if times != 0:
+		%levantaPeso.play("lose")
+		times -= 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta) -> void:
@@ -37,12 +43,12 @@ func _physics_process(delta) -> void:
 				elif instance_place().name == "Green":
 					%Fillment.size.x += 20
 				elif instance_place().name == "Red":
-					%Fillment.size.x += 30
+					%Fillment.size.x += 35
 				elif instance_place().name == "Perfect":
-					%Fillment.size.x += 65
+					%Fillment.size.x += 75
 			position.x = initPos
 		if %Fillment.size.x > 0:
-			%Fillment.size.x -= 0.6
+			%Fillment.size.x -= 0.75
 	else:
 		%treinador.play("whistle")
 		
@@ -50,9 +56,12 @@ func _physics_process(delta) -> void:
 		%Fillment.size.x = 436
 		%WIN.text = "YOU WIN"
 		playing = false
-		if %mlkDosPesos.frame < 4: %levantaPeso.play("pesos") 
+		%levantaPeso.play("pesos")
 	elif %Fillment.size.x <= 0:
 		%Fillment.size.x = 0
 		%WIN.text = "YOU LOSE"
 		playing = false
-		%mlkDosPesos.frame = 2
+		play_lose()
+	
+	await get_tree().create_timer(3).timeout
+	get_tree().change_scene_to_file("res://Scenes/academia.tscn")

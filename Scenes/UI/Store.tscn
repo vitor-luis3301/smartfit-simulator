@@ -171,6 +171,7 @@ expand_icon = true
 script = ExtResource("6_yk2xa")
 equipment = "esteira"
 price = 1200
+dificulty = "medium"
 
 [node name="Button6" type="Button" parent="ScrollContainer/GridContainer"]
 unique_name_in_owner = true
@@ -182,6 +183,7 @@ expand_icon = true
 script = ExtResource("6_yk2xa")
 equipment = "tapete"
 price = 40
+dificulty = "easy"
 
 [node name="Button7" type="Button" parent="ScrollContainer/GridContainer"]
 unique_name_in_owner = true
@@ -204,7 +206,7 @@ theme = ExtResource("2_syw4e")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Esteira
 $ 1200
-dificuldade: Você decide!"
+dificuldade: Médio"
 horizontal_alignment = 1
 
 [node name="Label6" type="Label" parent="ScrollContainer/GridContainer"]
@@ -214,7 +216,7 @@ theme = ExtResource("2_syw4e")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Tapete de ginástica
 $ 40
-dificuldade: Você decide"
+dificuldade: Fácil"
 horizontal_alignment = 1
 
 [node name="Label7" type="Label" parent="ScrollContainer/GridContainer"]

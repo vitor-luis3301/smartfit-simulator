@@ -2,7 +2,8 @@ extends Area2D
 
 var initPos = 251
 var speed = 9
-var playing : bool = true
+var playing : bool 
+var started : bool = false
 
 func instance_place():
 	var areas : Array = []
@@ -17,6 +18,12 @@ func instance_place():
 func _physics_process(delta) -> void:
 	if not instance_place():
 		speed = -speed
+	
+	%WIN.text = str(int(%Timer.time_left)+1)
+	if %Timer.time_left <= 0 and started == false:
+		%WIN.text = "GO!"
+		playing = true
+		started = true
 	
 	if playing:
 		position.x = position.x + speed
@@ -33,7 +40,6 @@ func _physics_process(delta) -> void:
 					%Fillment.size.x += 35
 				elif instance_place().name == "Perfect":
 					%Fillment.size.x += 75
-				print(instance_place().name)
 			position.x = initPos
 		if %Fillment.size.x > 0:
 			%Fillment.size.x -= 0.8
@@ -50,6 +56,3 @@ func _physics_process(delta) -> void:
 		%WIN.text = "YOU LOSE"
 		playing = false
 		%mlkDosPesos.frame = 2
-	
-	
-	

@@ -55,10 +55,13 @@ texture = ExtResource("8_qj118")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
+0:0/0/custom_data_0 = "peso_giga"
 
 [sub_resource type="TileSet" id="TileSet_ba61e"]
 tile_size = Vector2i(48, 48)
 physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "equipment"
+custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_aygtt")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_os8fj"]
@@ -116,7 +119,7 @@ unique_name_in_owner = true
 use_parent_material = true
 tile_set = SubResource("TileSet_8jsab")
 
-[node name="smol_equip" type="TileMapLayer" parent="NavigationRegion2D"]
+[node name="smol_equip" type="TileMapLayer" parent="NavigationRegion2D" groups=["tilemap"]]
 unique_name_in_owner = true
 use_parent_material = true
 tile_set = ExtResource("2_vwq03")
@@ -125,7 +128,7 @@ tile_set = ExtResource("2_vwq03")
 unique_name_in_owner = true
 tile_set = SubResource("TileSet_apn7p")
 
-[node name="mid_equip" type="TileMapLayer" parent="NavigationRegion2D"]
+[node name="mid_equip" type="TileMapLayer" parent="NavigationRegion2D" groups=["tilemap"]]
 unique_name_in_owner = true
 tile_set = SubResource("TileSet_ba61e")
 
@@ -134,12 +137,13 @@ unique_name_in_owner = true
 use_parent_material = true
 tile_set = SubResource("TileSet_kmlcf")
 
-[node name="beeg_equip" type="TileMapLayer" parent="NavigationRegion2D"]
+[node name="beeg_equip" type="TileMapLayer" parent="NavigationRegion2D" groups=["tilemap"]]
 unique_name_in_owner = true
 use_parent_material = true
 tile_set = ExtResource("3_f2wtw")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 1
 stream = ExtResource("8_p8l7h")
 autoplay = true
 parameters/looping = true
@@ -150,8 +154,13 @@ texture = ExtResource("9_rlw2f")
 
 [node name="Spawner" type="Node2D" parent="."]
 unique_name_in_owner = true
+process_mode = 4
 position = Vector2(62, 668)
 script = ExtResource("11_6natk")
+
+[node name="Timer" type="Timer" parent="Spawner"]
+wait_time = 3.0
+autostart = true
 
 [node name="ProtectedArea" type="Area2D" parent="."]
 position = Vector2(802, 548)

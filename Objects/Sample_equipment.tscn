@@ -1,11 +1,165 @@
-[gd_scene load_steps=3 format=3 uid="uid://lqv21aiv5776"]
+[gd_scene load_steps=10 format=3 uid="uid://lqv21aiv5776"]
 
 [ext_resource type="Script" path="res://Objects/sample_equipment.gd" id="1_6f46e"]
+[ext_resource type="Script" path="res://Objects/equipment_sprite.gd" id="2_rw75p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgwo6"]
 
-[node name="Area2D" type="Area2D"]
+[sub_resource type="Animation" id="Animation_4h8fn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, -11)]
+}
+
+[sub_resource type="Animation" id="Animation_e15er"]
+resource_name = "abdominal"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(2, -11), Vector2(-2.86, -11), Vector2(2, -11), Vector2(-2.86, -11)]
+}
+
+[sub_resource type="Animation" id="Animation_nkqhq"]
+resource_name = "corra"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.733333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_rop0j"]
+resource_name = "giga"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 3, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(2, -11), Vector2(0, -11), Vector2(2, -11)]
+}
+
+[sub_resource type="Animation" id="Animation_dbaas"]
+resource_name = "pesos"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(2, -11), Vector2(0, -11), Vector2(2, -11), Vector2(0, -11)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_deene"]
+_data = {
+"RESET": SubResource("Animation_4h8fn"),
+"abdominal": SubResource("Animation_e15er"),
+"corra": SubResource("Animation_nkqhq"),
+"giga": SubResource("Animation_rop0j"),
+"pesos": SubResource("Animation_dbaas")
+}
+
+[node name="Area2D" type="Area2D" groups=["equipments"]]
 script = ExtResource("1_6f46e")
 
 [node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vgwo6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, -11)
+scale = Vector2(3.43, 3.43)
+hframes = 2
+vframes = 3
+frame = 1
+script = ExtResource("2_rw75p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_deene")
+}
+
+[connection signal="area_entered" from="." to="Sprite2D" method="_on_area_2d_area_entered"]

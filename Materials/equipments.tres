@@ -8,19 +8,19 @@ texture = ExtResource("1_uy2d7")
 texture_region_size = Vector2i(96, 96)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-48, 2.5, 48, 3, 48, 48, -48, 48)
+0:0/0/custom_data_0 = "esteira"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5w2cl"]
 texture = ExtResource("2_ba5at")
 texture_region_size = Vector2i(96, 96)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-48, -27.1724, 48, -27.5, 48, 26.7733, -48, 27.4033)
+0:0/0/custom_data_0 = "tapete"
 
 [resource]
 tile_size = Vector2i(96, 96)
 physics_layer_0/collision_layer = 1
 custom_data_layer_0/name = "equipment"
 custom_data_layer_0/type = 4
-custom_data_layer_1/name = "dificulty"
-custom_data_layer_1/type = 2
 sources/0 = SubResource("TileSetAtlasSource_gixdr")
 sources/1 = SubResource("TileSetAtlasSource_5w2cl")

@@ -4,7 +4,15 @@ extends Node
 var money : int = 10000
 var inventory = {}
 var selectedItem
-var environment = {}
+var environment = []
+var equipments = [
+	"peso_peq",
+	"peso_med",
+	"peso_gran",
+	"peso_giga",
+	"esteira",
+	"tapete"
+]
 #-----------------------------------------------
 
 # -----------------SETTINGS---------------------

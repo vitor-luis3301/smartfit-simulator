@@ -1,17 +1,65 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdivctxj7bb8i"]
+[gd_scene load_steps=9 format=3 uid="uid://cdivctxj7bb8i"]
 
 [ext_resource type="Script" path="res://Objects/npc.gd" id="1_1jbmt"]
-[ext_resource type="Texture2D" uid="uid://c1xfdo8jkctxu" path="res://icon.svg" id="1_hannt"]
+[ext_resource type="Texture2D" uid="uid://d8dcut4t0ex7" path="res://Assets/sprites/Characters/spr_mlkMini.png" id="2_gtmgu"]
+[ext_resource type="Script" path="res://Objects/npc-help.gd" id="3_obbb8"]
+
+[sub_resource type="Animation" id="Animation_488wi"]
+resource_name = "corre"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_ntr1q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qfkt8"]
+_data = {
+"RESET": SubResource("Animation_ntr1q"),
+"corre": SubResource("Animation_488wi")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ngkik"]
-radius = 14.0
+radius = 12.0416
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_qaxlj"]
+radius = 13.0384
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["npc"]]
 script = ExtResource("1_1jbmt")
 
-[node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.025, 0.025)
-texture = ExtResource("1_hannt")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
+scale = Vector2(4.01, 4.01)
+texture = ExtResource("2_gtmgu")
+hframes = 3
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_qfkt8")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ngkik")
@@ -24,5 +72,11 @@ debug_enabled = true
 [node name="Timer" type="Timer" parent="Navigation"]
 wait_time = 0.1
 autostart = true
+
+[node name="Area2D" type="Area2D" parent="." groups=["npc"]]
+script = ExtResource("3_obbb8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_qaxlj")
 
 [connection signal="timeout" from="Navigation/Timer" to="." method="_on_timer_timeout"]

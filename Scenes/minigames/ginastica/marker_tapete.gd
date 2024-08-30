@@ -1,8 +1,8 @@
 extends Area2D
 
 var initPos = 251
-var speed = 7.5
-var playing : bool
+var speed = 5
+var playing : bool 
 var started : bool = false
 
 func instance_place():
@@ -42,7 +42,7 @@ func _physics_process(delta) -> void:
 					%Fillment.size.x += 65
 			position.x = initPos
 		if %Fillment.size.x > 0:
-			%Fillment.size.x -= 0.6
+			%Fillment.size.x -= 0.4
 	else:
 		%treinador.play("whistle")
 		
@@ -50,9 +50,13 @@ func _physics_process(delta) -> void:
 		%Fillment.size.x = 436
 		%WIN.text = "YOU WIN"
 		playing = false
-		if %mlkDosPesos.frame < 4: %levantaPeso.play("pesos") 
+		%levantaPeso.play("pesos")
+		await get_tree().create_timer(5).timeout
+		get_tree().change_scene_to_file("res://Scenes/academia.tscn")
 	elif %Fillment.size.x <= 0:
 		%Fillment.size.x = 0
 		%WIN.text = "YOU LOSE"
 		playing = false
 		%mlkDosPesos.frame = 2
+		await get_tree().create_timer(5).timeout
+		get_tree().change_scene_to_file("res://Scenes/academia.tscn")

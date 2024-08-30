@@ -27,5 +27,3 @@ func _on_buying_pressed() -> void:
 				break
 		
 		Global.money -= price
-		
-		print(Global.inventory)

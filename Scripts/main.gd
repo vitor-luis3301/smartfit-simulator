@@ -68,10 +68,9 @@ func _physics_process(delta: float) -> void:
 	# define the position of the equipment based on the size of the tile
 	var equipPosition = tilesize * tile + Vector2i(tilesize/2, tilesize/2)
 	
-	var equips = []
 	# Add equipment to the map when left mouse button is clicked
 	if Input.is_action_just_pressed("left_button") and canClick == true:
-		if Global.selectedItem:
+		if Global.selectedItem and has_item(Global.selectedItem):
 			if Global.selectedItem == "peso_giga":
 				%mid_equip.set_cell(tile, 0, Vector2i(0,0), 0)
 			elif Global.selectedItem == "esteira":
@@ -85,20 +84,35 @@ func _physics_process(delta: float) -> void:
 			elif Global.selectedItem == "peso_gran":
 				%smol_equip.set_cell(tile, 2, Vector2i(0,0), 0)
 			
-			spawn_equipmens(tilesize, equipPosition)
+			spawn_equipmens(tilesize, equipPosition, Global.selectedItem)
+			
+			for i in Global.inventory:
+				if Global.inventory[i][0] == Global.selectedItem:
+					Global.inventory[i][3] -= 1
 	
 	# Remove equipment to the map if right mouse button is clicked
 	if Input.is_action_pressed("right_button"):
-		pass 
+		pass
 		# Implement it in another way
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
 
-func spawn_equipmens(size, mousePos):
+func has_item(item) -> bool:
+	for i in Global.inventory:
+		if Global.inventory[i][0] == item:
+			if Global.inventory[i][3] > 0:
+				return true
+			else:
+				return false
+	return false
+
+func spawn_equipmens(size, mousePos, type):
 	var newEquip = equipment.instantiate()
 	newEquip.position = mousePos
 	newEquip.get_node("collision").shape.size = Vector2(size, size)
+	
+	newEquip.type = type
 	
 	add_child(newEquip)
 	return newEquip
